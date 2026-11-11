@@ -4,7 +4,7 @@ Emir ve 3 arkadaşının SPL **Düzey 3 + Türev Araçlar** sınavlarına çalı
 Site: https://emrcnkkl.github.io/spl-calisma/ (GitHub Pages, main / kök). Depo herkese açık.
 
 ## Yapı
-- `index.html` — tek sayfa uygulama (inline CSS/JS, kütüphane yok). Tasarım kişisel panelden bilerek farklı: üstte yatay menü, ortada ~1040px sütun,
+- `index.html` — tek sayfa uygulama (inline CSS/JS, kütüphane yok). Tasarım kişisel panelden bilerek farklı: solda 92px koyu simge şeridi (simge + kısa ad), ortada ~1040px sütun,
   taş grisi zemin + mürekkep + kobalt vurgu (yeşil yalnızca başarı durumları), Fraunces başlıklar; telefonda alt menü. Rotalar: `#ana #moduller #m01…#m13 #kartlar #deneme #sinavlar #grup #rehber`.
 - `veri/moduller.js` — `SPL_MODULLER` (13 modül, SPL resmî alt başlıkları; m13 = Türev Araçlar Lisansı'nın 7. konusu, 13.x numaralı) ve `SPL_LISANSLAR` (d1, d2, d3, tv → modül listeleri).
 - `veri/mXX.js` — `SPL.ekle("mXX", { uyari?, ozet:[{b, t:[…]}], kartlar:[[ön, arka]], sorular:[{s, c:[şıklar], d:doğruIndex, a:açıklama}] })`. Şıklar ekranda karıştırılır.
