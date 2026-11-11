@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SPL Çalışma</title>
+<meta name="description" content="SPL Düzey 3 ve Türev Araçlar lisans sınavlarına çalışma: konu takibi, özetler, tekrar kartları, deneme sınavları.">
+<meta name="theme-color" content="#0B1512">
+<script>try{var t=localStorage.getItem("spl.tema");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Düzen: solda menü, sağda içerik; telefonda alt menü. Kâğıt üstüne mürekkep: koyu zümrüt + kehribar vurgu. */
+:root{
+  --bg:#F3F1EA; --surface:#FFFFFF; --surface-2:#F7F5EF; --line:rgba(20,40,30,.11); --line-2:rgba(20,40,30,.2);
+  --ink:#13211B; --muted:#5B6862; --acc:#0F7A55; --acc-soft:#DDF1E7; --amber:#B7791F; --amber-soft:#FBEFD8;
+  --good:#167A4A; --good-soft:#DDF2E5; --bad:#C2412F; --bad-soft:#FBE3DE; --warn:#A86A06; --warn-soft:#FBEFD3;
+  --shadow:0 1px 2px rgba(16,30,24,.05),0 12px 30px -18px rgba(16,30,24,.25);
+  --f-d:"Fraunces",Georgia,serif; --f-b:"Inter",system-ui,sans-serif; --f-m:"JetBrains Mono",ui-monospace,Menlo,monospace; --r:16px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1512; --surface:#111D18; --surface-2:#16241E; --line:rgba(220,255,235,.08); --line-2:rgba(220,255,235,.17);
+  --ink:#E7EFEA; --muted:#8FA198; --acc:#3FC48D; --acc-soft:rgba(63,196,141,.13); --amber:#E9B357; --amber-soft:rgba(233,179,87,.13);
+  --good:#4CCB8A; --good-soft:rgba(76,203,138,.13); --bad:#F17C6B; --bad-soft:rgba(241,124,107,.13); --warn:#EDB25A; --warn-soft:rgba(237,178,90,.13);
+  --shadow:inset 0 1px 0 rgba(255,255,255,.03),0 18px 40px -22px rgba(0,0,0,.8); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0B1512; --surface:#111D18; --surface-2:#16241E; --line:rgba(220,255,235,.08); --line-2:rgba(220,255,235,.17);
+  --ink:#E7EFEA; --muted:#8FA198; --acc:#3FC48D; --acc-soft:rgba(63,196,141,.13); --amber:#E9B357; --amber-soft:rgba(233,179,87,.13);
+  --good:#4CCB8A; --good-soft:rgba(76,203,138,.13); --bad:#F17C6B; --bad-soft:rgba(241,124,107,.13); --warn:#EDB25A; --warn-soft:rgba(237,178,90,.13);
+  --shadow:inset 0 1px 0 rgba(255,255,255,.03),0 18px 40px -22px rgba(0,0,0,.8); color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:14.5px/1.55 var(--f-b);-webkit-font-smoothing:antialiased}
+a{color:var(--acc)}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-d);font-weight:700;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.mono{font-family:var(--f-m);font-variant-numeric:tabular-nums}
+.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh}
+/* Menü */
+.side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:18px;padding:22px 14px 18px max(16px,env(safe-area-inset-left,0px));border-right:1px solid var(--line);background:color-mix(in srgb,var(--surface) 55%,transparent)}
+.logo{display:flex;align-items:center;gap:10px;padding:0 8px}
+.logo .mk{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--acc);color:var(--bg);font:700 15px var(--f-d)}
+.logo b{font:700 18px var(--f-d);display:block;line-height:1.1}
+.logo small{color:var(--muted);font-size:11.5px}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:500;position:relative}
+.nav a svg{width:18px;height:18px;flex:none}
+.nav a:hover{background:var(--surface-2);color:var(--ink)}
+.nav a[aria-current="page"]{background:var(--acc-soft);color:var(--ink)}
+.nav a[aria-current="page"] svg{color:var(--acc)}
+.nav a .bdg{margin-left:auto;font:700 10.5px var(--f-m);padding:1px 6px;border-radius:8px;background:var(--amber-soft);color:var(--amber)}
+.side-foot{margin-top:auto;display:flex;flex-direction:column;gap:10px;font-size:12px;color:var(--muted)}
+.theme{display:grid;grid-template-columns:repeat(3,1fr);padding:3px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line)}
+.theme button{all:unset;cursor:pointer;text-align:center;font-size:12px;padding:5px 0;border-radius:7px;color:var(--muted)}
+.theme button[aria-checked="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+main{min-width:0;padding:28px max(28px,env(safe-area-inset-right,0px)) 60px 28px}
+.wrap{max-width:1160px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+/* Ortak bileşenler */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 20px;min-width:0}
+.card h2{font-size:19px;margin-bottom:12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card h2 small{font:500 12.5px var(--f-b);color:var(--muted);margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.muted{color:var(--muted)}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 16px;border-radius:10px;font-weight:600;font-size:14px;background:var(--acc);color:var(--bg);transition:transform .1s,filter .15s}
+.btn:hover{filter:brightness(1.07)} .btn:active{transform:translateY(1px)}
+.btn.ghost{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:6px 11px;font-size:13px}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.bar{height:7px;border-radius:7px;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:7px;background:var(--acc)}
+.tag{display:inline-flex;align-items:center;gap:5px;font:600 10.5px var(--f-b);letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:6px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.tag.ok{color:var(--good);border-color:color-mix(in srgb,var(--good) 35%,transparent);background:var(--good-soft)}
+.tag.no{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 35%,transparent);background:var(--bad-soft)}
+.tag.am{color:var(--amber);border-color:color-mix(in srgb,var(--amber) 35%,transparent);background:var(--amber-soft)}
+.tag.ac{color:var(--acc);border-color:color-mix(in srgb,var(--acc) 35%,transparent);background:var(--acc-soft)}
+.empty{color:var(--muted);font-size:13.5px}
+input[type=text],input[type=number],input[type=date],select{font:inherit;color:var(--ink);background:var(--surface-2);border:1px solid var(--line-2);border-radius:9px;padding:8px 10px;min-width:0}
+.row{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row .grow{flex:1;min-width:0}
+.ring{--p:0;width:92px;height:92px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(closest-side,var(--surface) 78%,transparent 79%),conic-gradient(var(--acc) calc(var(--p)*1%),var(--surface-2) 0)}
+.ring b{font:700 20px var(--f-d)}
+.ring.am{background:radial-gradient(closest-side,var(--surface) 78%,transparent 79%),conic-gradient(var(--amber) calc(var(--p)*1%),var(--surface-2) 0)}
+/* Ana sayfa */
+.hero{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;justify-content:space-between;padding:26px 28px;border-radius:22px;background:linear-gradient(135deg,color-mix(in srgb,var(--acc) 14%,var(--surface)),var(--surface) 55%);border:1px solid var(--line);box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(26px,3vw,36px)}
+.hero p{margin:6px 0 0;color:var(--muted);max-width:56ch}
+.rings{display:flex;gap:20px;flex-wrap:wrap}
+.rings .r{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12.5px;font-weight:600}
+.next{display:flex;flex-direction:column;gap:10px}
+.next .nx{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.next .nx:hover{border-color:var(--line-2)}
+.next .nx .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc);font:700 14px var(--f-m);flex:none}
+.next .nx b{display:block;font-size:14px}
+.next .nx span{font-size:12.5px;color:var(--muted)}
+.lic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.lic .l{padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);display:flex;flex-direction:column;gap:8px}
+.lic .l h3{font-size:16px}
+.lic .l .s{font-size:12px;color:var(--muted)}
+/* Modül kartları */
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.mod{display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:16px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.mod:hover{border-color:var(--line-2);transform:translateY(-2px)}
+.mod .top{display:flex;align-items:center;gap:10px}
+.mod .no{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line);font:700 13px var(--f-m);color:var(--acc);flex:none}
+.mod h3{font-size:16px;line-height:1.25}
+.mod .meta{display:flex;flex-wrap:wrap;gap:6px}
+.mod .st{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+/* Modül sayfası */
+.mhead{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-end;justify-content:space-between}
+.mhead h1{font-size:clamp(24px,2.6vw,32px)}
+.crumb{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.crumb a{color:var(--muted)}
+.tabs{display:inline-flex;gap:2px;padding:3px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);flex-wrap:wrap}
+.tabs button{all:unset;cursor:pointer;padding:7px 14px;border-radius:9px;font-weight:600;font-size:13.5px;color:var(--muted)}
+.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.topics{display:flex;flex-direction:column}
+.tp{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:flex-start;padding:10px 8px;border-radius:10px;border-top:1px solid var(--line)}
+.tp:first-child{border-top:0}
+.tp:hover{background:var(--surface-2)}
+.tp .k{font:600 12px var(--f-m);color:var(--muted);min-width:46px;padding-top:2px}
+.tp .bx{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line-2);flex:none;margin-top:2px;display:grid;place-items:center}
+.tp[aria-pressed="true"] .bx{background:var(--acc);border-color:var(--acc)}
+.tp[aria-pressed="true"] .bx::after{content:"";width:9px;height:5px;border:2px solid var(--bg);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.tp[aria-pressed="true"] .tt{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line-2)}
+.tp .tt{font-size:14px}
+.tp.sub{padding-left:28px}
+.notes{display:flex;flex-direction:column;gap:14px}
+.note{padding:16px 18px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.note h3{font-size:16.5px;margin-bottom:8px}
+.note ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.note li{line-height:1.55}
+.warn{padding:12px 14px;border-radius:12px;background:var(--warn-soft);color:var(--ink);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);font-size:13.5px}
+/* Kart */
+.flash{perspective:1200px;max-width:640px;margin:0 auto;width:100%}
+.flash .in{position:relative;min-height:220px;transition:transform .45s;transform-style:preserve-3d;cursor:pointer}
+.flash.on .in{transform:rotateY(180deg)}
+.flash .f,.flash .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:26px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.flash .f{background:var(--surface)}
+.flash .b{background:color-mix(in srgb,var(--acc) 8%,var(--surface));transform:rotateY(180deg)}
+.flash .f b{font:600 20px/1.35 var(--f-d)}
+.flash .b p{font-size:16.5px;margin:0;line-height:1.5}
+.flash small{font-size:11.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.fbtns{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.btn.no{background:var(--bad)} .btn.ok{background:var(--good)}
+.boxes{display:flex;gap:6px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.boxes span{font:600 11.5px var(--f-m);padding:4px 8px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+/* Soru */
+.q{max-width:760px}
+.q .qs{font:600 17px/1.5 var(--f-b);margin:6px 0 14px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;border:1px solid var(--line-2);background:var(--surface)}
+.opt:hover{border-color:var(--acc)}
+.opt .L{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font:700 12px var(--f-m);background:var(--surface-2);flex:none}
+.opt.sel{border-color:var(--acc);background:var(--acc-soft)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt[disabled]{cursor:default}
+.expl{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);font-size:14px}
+.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.timer{font:700 22px var(--f-m)}
+.timer.low{color:var(--bad)}
+.qdots{display:flex;flex-wrap:wrap;gap:5px}
+.qdots button{all:unset;cursor:pointer;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font:600 11px var(--f-m);background:var(--surface-2);border:1px solid var(--line)}
+.qdots button.a{background:var(--acc-soft);border-color:var(--acc)}
+.qdots button.cur{outline:2px solid var(--amber)}
+.score{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.score .big{font:700 52px/1 var(--f-d)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl{overflow-x:auto}
+td input[type=number]{width:80px} td input[type=date]{width:150px}
+.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:700 14px var(--f-d);color:#fff;flex:none}
+.foot{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+/* Telefon */
+.mtop{display:none}
+@media (max-width:1000px){ .c4,.c5,.c6,.c7,.c8{grid-column:span 12} .lic{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:820px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{position:fixed;inset:auto 0 0 0;top:auto;height:auto;z-index:30;flex-direction:row;padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px));border-right:0;border-top:1px solid var(--line);background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+  .side .logo,.side-foot{display:none}
+  .nav{flex-direction:row;width:100%;justify-content:space-around}
+  .nav a{flex-direction:column;gap:2px;padding:6px 4px;font-size:10px;flex:1;text-align:center}
+  .nav a .bdg{position:absolute;top:0;right:calc(50% - 22px);margin:0}
+  .nav a .nl{font-size:0;line-height:1} .nav a .nl::after{content:attr(data-s);font-size:10.5px;white-space:nowrap}
+  .mtop{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:20;padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--bg) 85%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .mtop .logo{padding:0;margin-right:auto}
+  .mtop button{all:unset;cursor:pointer;padding:6px 10px;border-radius:9px;border:1px solid var(--line);font-size:12px}
+  main{padding:16px max(16px,env(safe-area-inset-right,0px)) calc(90px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+  .hero{padding:20px}
+  .lic{grid-template-columns:minmax(0,1fr)}
+  .ring{width:76px;height:76px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="mtop"><div class="logo"><span class="mk">S</span><div><b>SPL Çalışma</b></div></div><button type="button" id="mTheme">Tema</button></div>
+<div class="app">
+  <nav class="side" aria-label="Menü">
+    <div class="logo"><span class="mk">S</span><div><b>SPL Çalışma</b><small>Düzey 3 · Türev Araçlar</small></div></div>
+    <div class="nav" id="nav"></div>
+    <div class="side-foot">
+      <div class="theme" role="radiogroup" aria-label="Tema" id="themeSw"><button type="button" role="radio" data-t="system">Sistem</button><button type="button" role="radio" data-t="light">Açık</button><button type="button" role="radio" data-t="dark">Koyu</button></div>
+      <div>İlerlemen bu tarayıcıda saklanır. <a href="#rehber">Yedekleme</a></div>
+    </div>
+  </nav>
+  <main><div class="wrap" id="view"></div></main>
+</div>
+
+<script>window.SPL = { icerik: {}, ekle(id, o) { this.icerik[id] = o; } };</script>
+<script src="config.js"></script>
+<script src="veri/moduller.js"></script>
+<script src="veri/m01.js"></script><script src="veri/m02.js"></script><script src="veri/m03.js"></script><script src="veri/m04.js"></script>
+<script src="veri/m05.js"></script><script src="veri/m06.js"></script><script src="veri/m07.js"></script><script src="veri/m08.js"></script>
+<script src="veri/m09.js"></script><script src="veri/m10.js"></script><script src="veri/m11.js"></script><script src="veri/m12.js"></script>
+<script src="veri/m13.js"></script>
+<script>
+(() => {
+"use strict";
+const MODS = window.SPL_MODULLER, LIC = window.SPL_LISANSLAR, IC = SPL.icerik;
+const M = id => MODS.find(m => m.id === id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pad = n => String(n).padStart(2, "0");
+const ymd = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const today = () => ymd(new Date());
+const parseD = s => { const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(s || ""); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; };
+const daysUntil = s => { const d = parseD(s); if (!d) return null; const t = parseD(today()); return Math.round((d - t) / 864e5); };
+const fmtD = s => { const d = parseD(s); return d ? d.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }) : ""; };
+const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
+const shuffle = a => { const r = a.slice(); for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; };
+const hue = s => { let h = 7; for (const c of String(s || "")) h = (h * 31 + c.charCodeAt(0)) % 9973; return Math.round(h * 137.508) % 360; };
+
+/* ---------- Durum (tarayıcıda) ---------- */
+const KEY = "spl.v1";
+const blank = () => ({ ad: "", konu: {}, kart: {}, deneme: [], sinav: {}, plan: {}, paylas: false, son: null, yeni: null });
+let S = blank();
+try { S = Object.assign(blank(), JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (_) {}
+let saveT = 0;
+function save() { S.son = new Date().toISOString(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (_) {} clearTimeout(saveT); saveT = setTimeout(() => window.__grupYaz && window.__grupYaz(), 1500); }
+
+/* ---------- Hesaplar ---------- */
+const topicIds = m => m.alt.map(a => `${m.id}:${a.k}`);
+const modTopicPct = m => { const ids = topicIds(m); return pct(ids.filter(i => S.konu[i]).length, ids.length); };
+const bestDeneme = id => { const d = S.deneme.filter(x => x.m === id); return d.length ? Math.max(...d.map(x => x.puan)) : null; };
+const sinavPuan = id => { const x = S.sinav[id]; return x && x.puan !== "" && x.puan != null ? +x.puan : null; };
+function licStatus(l) {
+  const sc = l.mod.map(id => sinavPuan(id));
+  const done = sc.filter(v => v != null), passedEach = done.filter(v => v >= 50).length;
+  const avg = done.length ? done.reduce((a, b) => a + b, 0) / done.length : null;
+  const left = l.mod.length - done.length;
+  const sumDone = done.reduce((a, b) => a + b, 0);
+  const need = left ? Math.max(50, Math.ceil((60 * l.mod.length - sumDone) / left)) : null;
+  const ok = left === 0 && done.every(v => v >= 50) && Math.round(avg) >= 60;
+  const prog = Math.round(l.mod.reduce((a, id) => a + modTopicPct(M(id)), 0) / l.mod.length);
+  return { done: done.length, passedEach, avg, left, need, ok, prog, failed: done.filter(v => v < 50).length };
+}
+function nextTopic() {
+  const order = Object.keys(S.plan).length ? MODS.slice().sort((a, b) => (S.plan[a.id] || "9").localeCompare(S.plan[b.id] || "9")) : MODS;
+  for (const m of order) { if (sinavPuan(m.id) >= 50) continue; for (const a of m.alt) if (!S.konu[`${m.id}:${a.k}`]) return { m, a }; }
+  return null;
+}
+/* Kart tekrar sistemi (Leitner): kutu 0–5, aralıklar gün */
+const GAP = [0, 1, 3, 7, 14, 30];
+const allCards = (mods) => (mods || MODS).flatMap(m => (IC[m.id]?.kartlar || []).map((c, i) => ({ id: `${m.id}:${i}`, m: m.id, f: c[0], b: c[1] })));
+const cardState = id => S.kart[id] || { k: 0, t: null };
+const YENI_GUN = 20; // günde en fazla bu kadar yeni kart
+const yeniBugun = () => (S.yeni && S.yeni.g === today()) ? S.yeni.n : 0;
+const isDue = id => { const s = S.kart[id]; return !!s && (!s.t || s.t <= today()); };
+function dueCards(mods) {
+  const all = allCards(mods), seen = all.filter(c => isDue(c.id));
+  const started = new Set(MODS.filter(m => m.alt.some(a => S.konu[`${m.id}:${a.k}`])).map(m => m.id));
+  const unseen = all.filter(c => !S.kart[c.id]).sort((a, b) => (started.has(b.m) - started.has(a.m)) || ((S.plan[a.m] || "9").localeCompare(S.plan[b.m] || "9")));
+  return seen.concat(unseen.slice(0, Math.max(0, YENI_GUN - yeniBugun())));
+}
+function rateCard(id, ok) {
+  if (!S.kart[id]) S.yeni = { g: today(), n: yeniBugun() + 1 };
+  const s = cardState(id); const k = ok ? Math.min(5, s.k + 1) : 0;
+  const d = new Date(); d.setDate(d.getDate() + (ok ? GAP[k] : 0));
+  S.kart[id] = { k, t: ymd(d) }; save();
+}
+
+/* ---------- Menü ---------- */
+const IKON = {
+  ana: '<path d="M3 11 12 4l9 7v9H3z"/><path d="M9 20v-6h6v6"/>',
+  moduller: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+  kartlar: '<rect x="4" y="6" width="14" height="14" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v11"/>',
+  deneme: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/>',
+  sinavlar: '<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13l2 2 4-4"/>',
+  grup: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.6c2.6.2 4.6 2 5.3 5"/>',
+  rehber: '<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>'
+};
+const NAV = [["ana", "Ana sayfa"], ["moduller", "Modüller"], ["kartlar", "Kartlar"], ["deneme", "Deneme"], ["sinavlar", "Sınavlarım"], ["grup", "Grup"], ["rehber", "Rehber"]];
+const NAV_KISA = { ana: "Ana", sinavlar: "Sınavlar" };
+function renderNav(cur) {
+  const due = dueCards().length;
+  document.getElementById("nav").innerHTML = NAV.map(([id, l]) => `<a href="#${id}" ${cur === id ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${IKON[id]}</svg><span class="nl" data-s="${NAV_KISA[id] || l}">${l}</span>${id === "kartlar" && due ? `<span class="bdg">${due > 99 ? "99+" : due}</span>` : ""}</a>`).join("");
+}
+
+/* ---------- Görünümler ---------- */
+const V = document.getElementById("view");
+const ring = (p, label, cls = "") => `<div class="r"><div class="ring ${cls}" style="--p:${p}"><b>${p}<small style="font-size:11px">%</small></b></div>${esc(label)}</div>`;
+const bar = p => `<div class="bar"><i style="width:${p}%"></i></div>`;
+
+function vAna() {
+  if (!S.ad) return vHosgeldin();
+  const d3 = licStatus(LIC.find(l => l.id === "d3")), tv = licStatus(LIC.find(l => l.id === "tv"));
+  const nt = nextTopic(), due = dueCards().length;
+  const lastD = S.deneme.slice(-1)[0];
+  const upcoming = MODS.filter(m => S.plan[m.id] && daysUntil(S.plan[m.id]) >= 0 && sinavPuan(m.id) == null).sort((a, b) => S.plan[a.id].localeCompare(S.plan[b.id])).slice(0, 4);
+  return `
+  <section class="hero">
+    <div><h1>Merhaba ${esc(S.ad)}</h1><p>${nt ? `Sıradaki konu: <b>${esc(nt.m.kisa)}</b> · ${esc(nt.a.k)} ${esc(nt.a.t)}` : "Tüm konular işaretli. Deneme sınavlarıyla pekiştir."}</p></div>
+    <div class="rings">${ring(d3.prog, "Düzey 3")}${ring(tv.prog, "Türev Araçlar", "am")}</div>
+  </section>
+  <div class="grid">
+    <div class="card c7"><h2>Bugün ne yapayım?</h2><div class="next">
+      ${nt ? `<a class="nx" href="#${nt.m.id}"><span class="ic">${esc(nt.m.no)}</span><div><b>${esc(nt.a.k)} ${esc(nt.a.t)}</b><span>${esc(nt.m.kisa)} · konuyu çalış, özeti oku, işaretle</span></div></a>` : ""}
+      <a class="nx" href="#kartlar"><span class="ic">${due}</span><div><b>${due ? `${due} kart tekrar bekliyor` : "Bugünlük kart tekrarı bitti"}</b><span>Unuttuğun kartlar daha sık karşına çıkar</span></div></a>
+      <a class="nx" href="#deneme"><span class="ic">25</span><div><b>Deneme sınavı çöz</b><span>${lastD ? `Son deneme: ${esc(M(lastD.m)?.kisa || "Karışık")} · ${lastD.puan} puan` : "Gerçek sınav gibi: 25 soru, 45 dakika"}</span></div></a>
+    </div></div>
+    <div class="card c5"><h2>Yaklaşan sınavların <small><a href="#sinavlar">Planla</a></small></h2>
+      ${upcoming.length ? upcoming.map(m => { const n = daysUntil(S.plan[m.id]); return `<div class="row"><span class="tag ${n <= 7 ? "no" : n <= 21 ? "am" : "ac"}">${n === 0 ? "Bugün" : n + " gün"}</span><div class="grow"><b>${esc(m.kisa)}</b><div class="muted" style="font-size:12.5px">${fmtD(S.plan[m.id])} · konular %${modTopicPct(m)}</div></div></div>`; }).join("") : `<p class="empty">Henüz sınav tarihi planlamadın. <a href="#sinavlar">Sınavlarım</a> sayfasından modüllere tarih koyabilirsin.</p>`}
+    </div>
+    <div class="card c12"><h2>Lisans durumu <small>Her modülden en az 50, ortalama en az 60</small></h2><div class="lic">
+      ${LIC.map(l => { const s = licStatus(l); return `<div class="l"><h3>${esc(l.ad)}</h3><div class="s">${l.mod.length} modül · konular %${s.prog}</div>${bar(s.prog)}
+        <div class="s">${s.ok ? `<span class="tag ok">Lisans sınavları tamam</span>` : s.done ? `${s.done}/${l.mod.length} modül sınavı verildi${s.failed ? ` · <span style="color:var(--bad)">${s.failed} modül 50 altı</span>` : ""}${s.left ? ` · kalanlardan ort. <b>${s.need}</b> gerekli` : ""}` : "Henüz sınav sonucu yok"}</div></div>`; }).join("")}
+    </div></div>
+  </div>`;
+}
+function vHosgeldin() {
+  return `<section class="hero"><div><h1>SPL Çalışma'ya hoş geldin</h1><p>Düzey 3 ve Türev Araçlar lisanslarının 13 modülü için konu takibi, özetler, tekrar kartları ve deneme sınavları. İlerlemen yalnızca bu tarayıcıda saklanır; istersen Grup sayfasından arkadaşlarınla paylaşabilirsin.</p></div></section>
+  <div class="card" style="max-width:520px"><h2>Sana nasıl hitap edelim?</h2><form id="adForm" style="display:flex;gap:10px;flex-wrap:wrap"><input type="text" id="adIn" placeholder="Adın" required maxlength="30" style="flex:1"><button class="btn" type="submit">Başla</button></form></div>`;
+}
+function vModuller() {
+  return `<div><h1 style="font-size:30px">Modüller</h1><p class="muted" style="margin:6px 0 0">Düzey 3'ün 12 modülü + Türev Araçlar modülü. Mevzuat modülü Düzey 1'deki "Dar Kapsamlı" sınavın yerine de geçer.</p></div>
+  <div class="mods">${MODS.map(m => { const p = modTopicPct(m), b = bestDeneme(m.id), sp = sinavPuan(m.id), lic = LIC.filter(l => l.mod.includes(m.id)).map(l => l.ad);
+    return `<a class="mod" href="#${m.id}"><div class="top"><span class="no">${m.no}</span><h3>${esc(m.kisa)}</h3></div>
+      <div class="meta">${lic.map(x => `<span class="tag">${esc(x)}</span>`).join("")}</div>
+      ${bar(p)}<div class="st"><span>Konular %${p} · ${m.alt.length} başlık</span><span>${sp != null ? `<span class="tag ${sp >= 50 ? "ok" : "no"}">SPL ${sp}</span>` : b != null ? `Deneme en iyi ${b}` : `${(IC[m.id]?.sorular || []).length} soru`}</span></div></a>`; }).join("")}</div>`;
+}
+
+let modTab = "konular";
+function vModul(id) {
+  const m = M(id), c = IC[id] || {};
+  const p = modTopicPct(m), lic = LIC.filter(l => l.mod.includes(id)).map(l => l.ad);
+  const tabs = [["konular", `Konular (${m.alt.length})`], ["ozet", "Özet"], ["kartlar", `Kartlar (${(c.kartlar || []).length})`], ["sorular", `Sorular (${(c.sorular || []).length})`]];
+  let body = "";
+  if (modTab === "konular") body = `<div class="card"><h2>SPL resmî konu başlıkları <small>Çalıştıkça işaretle</small></h2><div class="topics">${m.alt.map(a => { const k = `${id}:${a.k}`, dep = (a.k.match(/\./g) || []).length; return `<button type="button" class="tp${dep >= 2 ? " sub" : ""}" data-k="${esc(k)}" aria-pressed="${!!S.konu[k]}"><span class="bx"></span><span class="k">${esc(a.k)}</span><span class="tt">${esc(a.t)}</span></button>`; }).join("")}</div></div>`;
+  if (modTab === "ozet") body = `${c.uyari ? `<div class="warn">${esc(c.uyari)}</div>` : ""}<div class="notes">${(c.ozet || []).map(o => `<div class="note"><h3>${esc(o.b)}</h3><ul>${o.t.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>`).join("")}</div>`;
+  if (modTab === "kartlar") body = `<div class="card">${(c.kartlar || []).length ? `<div class="tbl"><table><thead><tr><th>Ön yüz</th><th>Arka yüz</th><th>Kutu</th></tr></thead><tbody>${c.kartlar.map((k, i) => `<tr><td><b>${esc(k[0])}</b></td><td>${esc(k[1])}</td><td class="mono">${cardState(`${id}:${i}`).k}</td></tr>`).join("")}</tbody></table></div><div style="margin-top:14px"><a class="btn" href="#kartlar" data-only="${id}">Bu modülün kartlarını tekrar et</a></div>` : `<p class="empty">Bu modül için kart yok.</p>`}</div>`;
+  if (modTab === "sorular") body = `<div class="card" id="pratik">${pratikBody(id)}</div>`;
+  return `<div class="mhead"><div><div class="crumb"><a href="#moduller">Modüller</a> / ${m.no}</div><h1>${esc(m.ad)}</h1><div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">${lic.map(x => `<span class="tag">${esc(x)}</span>`).join("")}</div></div>
+    <div style="min-width:220px;flex:0 1 280px"><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px"><span class="muted">Konular</span><b>%${p}</b></div>${bar(p)}</div></div>
+    <div class="tabs" role="tablist" id="mtabs">${tabs.map(([k, l]) => `<button type="button" role="tab" data-t="${k}" aria-selected="${modTab === k}">${l}</button>`).join("")}</div>
+    ${body}
+    <p class="foot">Özetler, kartlar ve sorular çalışma amaçlı hazırlanmıştır; SPL'nin gerçek sınav sorularını içermez. Resmî kaynaklarla birlikte kullan.</p>`;
+}
+/* Modül içi pratik: tek tek soru, anında geri bildirim */
+let PR = null;
+function pratikBody(id) {
+  const qs = IC[id]?.sorular || [];
+  if (!qs.length) return `<p class="empty">Bu modül için soru yok.</p>`;
+  if (!PR || PR.id !== id) PR = { id, sira: shuffle(qs.map((_, i) => i)), i: 0, sec: null, dogru: 0, perm: null };
+  if (PR.i >= PR.sira.length) return `<div class="score"><div class="big">${PR.dogru}/${PR.sira.length}</div><div><b>Pratik bitti.</b><p class="muted" style="margin:4px 0 10px">Süreli deneme için Deneme sayfasını kullan.</p><button class="btn" type="button" data-act="prReset">Yeniden başla</button></div></div>`;
+  const q = qs[PR.sira[PR.i]]; if (!PR.perm) PR.perm = shuffle(q.c.map((_, i) => i));
+  const ans = PR.sec != null;
+  return `<div class="q"><div class="muted mono" style="font-size:12px">Soru ${PR.i + 1}/${PR.sira.length} · doğru ${PR.dogru}</div><div class="qs">${esc(q.s)}</div>
+    <div class="opts">${PR.perm.map((oi, k) => { const cls = ans ? (oi === q.d ? "right" : oi === PR.sec ? "wrong" : "") : ""; return `<button type="button" class="opt ${cls}" data-act="prSec" data-o="${oi}" ${ans ? "disabled" : ""}><span class="L">${"ABCDE"[k]}</span><span>${esc(q.c[oi])}</span></button>`; }).join("")}</div>
+    ${ans ? `<div class="expl"><b>${PR.sec === q.d ? "Doğru." : "Yanlış."}</b> ${esc(q.a || "")}</div><div class="qnav"><span></span><button class="btn" type="button" data-act="prNext">Sonraki soru</button></div>` : ""}</div>`;
+}
+
+/* Kartlar */
+let KT = null; // {mods, list, i, on}
+function vKartlar(only) {
+  if (!KT || (only && KT.only !== only)) KT = { only: only || null, list: shuffle(dueCards(only ? [M(only)] : null)), i: 0, on: false, ok: 0 };
+  const st = [0, 1, 2, 3, 4, 5].map(k => allCards().filter(c => cardState(c.id).k === k).length);
+  let main;
+  if (!KT.list.length || KT.i >= KT.list.length) main = `<div class="card" style="text-align:center"><h2 style="justify-content:center">${KT.list.length ? "Tekrar bitti" : "Bugün tekrar edilecek kart yok"}</h2><p class="muted">${KT.list.length ? `${KT.ok}/${KT.list.length} kartı bildin.` : "Yeni kartlar her gün tekrar zamanı gelince burada görünür."}</p><div class="fbtns"><button class="btn ghost" type="button" data-act="ktAll">Tüm kartları karıştırıp çalış</button></div></div>`;
+  else { const c = KT.list[KT.i]; main = `<div class="muted mono" style="text-align:center;font-size:12px">${KT.i + 1} / ${KT.list.length} · ${esc(M(c.m).kisa)}</div>
+    <div class="flash ${KT.on ? "on" : ""}" id="flash"><div class="in" data-act="ktFlip"><div class="f"><small>Soru</small><b>${esc(c.f)}</b><small style="margin-top:8px">Çevirmek için tıkla</small></div><div class="b"><small>Cevap</small><p>${esc(c.b)}</p></div></div></div>
+    <div class="fbtns">${KT.on ? `<button class="btn no" type="button" data-act="ktNo">Bilmedim</button><button class="btn ok" type="button" data-act="ktOk">Bildim</button>` : `<button class="btn" type="button" data-act="ktFlip">Cevabı göster</button>`}</div>`; }
+  return `<div><h1 style="font-size:30px">Tekrar kartları</h1><p class="muted" style="margin:6px 0 0">Her gün en fazla ${YENI_GUN} yeni kart gelir; önce çalışmaya başladığın modüllerden. Bildiğin kart bir üst kutuya geçer ve daha seyrek gelir (1, 3, 7, 14, 30 gün), bilmediğin kart başa döner. Klavye: boşluk çevirir, 1 bilmedim, 2 bildim.${KT.only ? ` Şu an yalnızca <b>${esc(M(KT.only).kisa)}</b>.` : ""}</p></div>
+    ${main}
+    <div class="boxes">${st.map((n, k) => `<span>Kutu ${k}: ${n}</span>`).join("")}</div>`;
+}
+
+/* Deneme sınavı */
+let DN = null; // {m, qs:[{qi,perm}], cev:{}, i, bas, sure, bitti, puan}
+let dnTimer = 0;
+function vDeneme() {
+  if (DN && !DN.bitti) return dnSoru();
+  if (DN && DN.bitti) return dnSonuc();
+  const hist = S.deneme.slice().reverse().slice(0, 10);
+  return `<div><h1 style="font-size:30px">Deneme sınavı</h1><p class="muted" style="margin:6px 0 0">Gerçek SPL formatı: modül başına 25 soru, 45 dakika, yanlışlar doğruyu götürmez, geçme notu 50. Soru bankasında 25'ten az soru varsa süre orantılı kısalır.</p></div>
+  <div class="grid"><div class="card c7"><h2>Yeni deneme</h2><form id="dnForm" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+    <select id="dnMod" style="flex:1;min-width:220px"><option value="karisik">Karışık (tüm modüller)</option>${MODS.map(m => `<option value="${m.id}">${m.no}. ${esc(m.kisa)} (${(IC[m.id]?.sorular || []).length} soru)</option>`).join("")}</select>
+    <button class="btn" type="submit">Başlat</button></form></div>
+  <div class="card c5"><h2>Geçmiş denemeler</h2>${hist.length ? hist.map(d => `<div class="row"><span class="tag ${d.puan >= 50 ? "ok" : "no"}">${d.puan}</span><div class="grow"><b>${esc(M(d.m)?.kisa || "Karışık")}</b><div class="muted" style="font-size:12px">${d.dogru}/${d.n} doğru · ${new Date(d.t).toLocaleDateString("tr-TR")}</div></div></div>`).join("") : `<p class="empty">Henüz deneme çözmedin.</p>`}</div></div>`;
+}
+function dnBaslat(mid) {
+  let pool = [];
+  for (const m of (mid === "karisik" ? MODS : [M(mid)])) (IC[m.id]?.sorular || []).forEach((q, i) => pool.push({ m: m.id, qi: i }));
+  const qs = shuffle(pool).slice(0, 25).map(x => ({ ...x, perm: shuffle(IC[x.m].sorular[x.qi].c.map((_, i) => i)) }));
+  DN = { m: mid, qs, cev: {}, i: 0, bas: Date.now(), sure: Math.round(qs.length * 45 / 25 * 60), bitti: false };
+  clearInterval(dnTimer); dnTimer = setInterval(dnTick, 1000);
+}
+function dnKalan() { return Math.max(0, DN.sure - Math.floor((Date.now() - DN.bas) / 1000)); }
+function dnTick() { if (!DN || DN.bitti) return clearInterval(dnTimer); const k = dnKalan(); const el = document.getElementById("dnT"); if (el) { el.textContent = `${pad(Math.floor(k / 60))}:${pad(k % 60)}`; el.classList.toggle("low", k < 120); } if (k <= 0) dnBitir(); }
+function dnSoru() {
+  const x = DN.qs[DN.i], q = IC[x.m].sorular[x.qi], k = dnKalan();
+  return `<div class="card"><div class="qnav" style="margin-top:0"><div><b>${esc(M(DN.m)?.kisa || "Karışık deneme")}</b><div class="muted" style="font-size:12px">Soru ${DN.i + 1}/${DN.qs.length} · ${Object.keys(DN.cev).length} cevaplandı</div></div><div class="timer mono" id="dnT">${pad(Math.floor(k / 60))}:${pad(k % 60)}</div></div>
+    <div class="q"><div class="qs">${esc(q.s)}</div><div class="opts">${x.perm.map((oi, j) => `<button type="button" class="opt ${DN.cev[DN.i] === oi ? "sel" : ""}" data-act="dnSec" data-o="${oi}"><span class="L">${"ABCDE"[j]}</span><span>${esc(q.c[oi])}</span></button>`).join("")}</div></div>
+    <div class="qnav"><button class="btn ghost" type="button" data-act="dnPrev" ${DN.i === 0 ? "disabled" : ""}>Önceki</button><div class="qdots">${DN.qs.map((_, j) => `<button type="button" data-act="dnGo" data-i="${j}" class="${DN.cev[j] != null ? "a" : ""} ${j === DN.i ? "cur" : ""}" aria-label="Soru ${j + 1}">${j + 1}</button>`).join("")}</div>${DN.i < DN.qs.length - 1 ? `<button class="btn" type="button" data-act="dnNext">Sonraki</button>` : `<button class="btn" type="button" data-act="dnBitir">Sınavı bitir</button>`}</div>
+    <div style="text-align:right;margin-top:10px"><button class="btn ghost sm" type="button" data-act="dnBitir">Şimdi bitir</button></div></div>`;
+}
+function dnBitir() {
+  if (!DN || DN.bitti) return; clearInterval(dnTimer);
+  const dogru = DN.qs.filter((x, j) => DN.cev[j] === IC[x.m].sorular[x.qi].d).length;
+  DN.bitti = true; DN.dogru = dogru; DN.puan = Math.round(dogru / DN.qs.length * 100);
+  S.deneme.push({ m: DN.m, t: new Date().toISOString(), puan: DN.puan, n: DN.qs.length, dogru, sure: Math.round((Date.now() - DN.bas) / 1000) }); save(); route();
+}
+function dnSonuc() {
+  return `<div class="card"><div class="score"><div class="big ${DN.puan >= 50 ? "" : ""}" style="color:${DN.puan >= 50 ? "var(--good)" : "var(--bad)"}">${DN.puan}</div><div><b>${DN.puan >= 50 ? "Geçme notunun üstünde" : "Geçme notunun (50) altında"}</b><p class="muted" style="margin:4px 0 10px">${DN.dogru}/${DN.qs.length} doğru · ${esc(M(DN.m)?.kisa || "Karışık")}</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" type="button" data-act="dnYeni">Yeni deneme</button></div></div></div></div>
+  <div class="card"><h2>Cevap anahtarı</h2>${DN.qs.map((x, j) => { const q = IC[x.m].sorular[x.qi], my = DN.cev[j], ok = my === q.d; return `<div class="row" style="align-items:flex-start"><span class="tag ${ok ? "ok" : my == null ? "" : "no"}">${j + 1}</span><div class="grow"><b>${esc(q.s)}</b><div style="font-size:13px;margin-top:4px">Doğru cevap: <b>${esc(q.c[q.d])}</b>${!ok && my != null ? ` · Senin cevabın: <span style="color:var(--bad)">${esc(q.c[my])}</span>` : my == null ? " · <span class='muted'>Boş</span>" : ""}</div><div class="muted" style="font-size:13px;margin-top:2px">${esc(q.a || "")}</div></div></div>`; }).join("")}</div>`;
+}
+
+/* Sınavlarım: plan + gerçek SPL sonuçları */
+function vSinavlar() {
+  return `<div><h1 style="font-size:30px">Sınavlarım</h1><p class="muted" style="margin:6px 0 0">Her modül için sınav tarihini planla, sınava girdikten sonra puanını yaz. Lisans durumu otomatik hesaplanır. Notlar 3 yıl geçerlidir; 3 yıldan eski notlar için yenileme eğitimi gerekir.</p></div>
+  <div class="card"><div class="tbl"><table><thead><tr><th>Modül</th><th>Planlanan tarih</th><th>SPL puanı</th><th>Sınav tarihi</th><th>Durum</th></tr></thead><tbody>
+  ${MODS.map(m => { const s = S.sinav[m.id] || {}, sp = sinavPuan(m.id), n = S.plan[m.id] ? daysUntil(S.plan[m.id]) : null;
+    return `<tr><td><b>${m.no}. ${esc(m.kisa)}</b><div class="muted" style="font-size:12px">Konular %${modTopicPct(m)}${bestDeneme(m.id) != null ? ` · deneme en iyi ${bestDeneme(m.id)}` : ""}</div></td>
+    <td><input type="date" data-plan="${m.id}" value="${esc(S.plan[m.id] || "")}" aria-label="${esc(m.kisa)} planlanan tarih">${n != null && n >= 0 && sp == null ? `<div class="muted" style="font-size:11.5px">${n} gün kaldı</div>` : ""}</td>
+    <td><input type="number" min="0" max="100" data-puan="${m.id}" value="${sp ?? ""}" placeholder="—" aria-label="${esc(m.kisa)} puan"></td>
+    <td><input type="date" data-tarih="${m.id}" value="${esc(s.tarih || "")}" aria-label="${esc(m.kisa)} sınav tarihi"></td>
+    <td>${sp == null ? `<span class="tag">Girilmedi</span>` : sp >= 50 ? `<span class="tag ok">Geçerli not</span>` : `<span class="tag no">50 altı · 30 gün sonra tekrar</span>`}</td></tr>`; }).join("")}
+  </tbody></table></div></div>
+  <div class="card"><h2>Lisanslar</h2>${LIC.map(l => { const s = licStatus(l); return `<div class="row"><div class="grow"><b>${esc(l.uzun)}</b><div class="muted" style="font-size:12.5px">${l.mod.map(id => `${M(id).no}`).join(" · ")} modülleri${l.not ? ` · ${esc(l.not)}` : ""}</div></div>
+    <div style="text-align:right">${s.ok ? `<span class="tag ok">Tamam · ort. ${Math.round(s.avg)}</span>` : s.done ? `<span class="tag am">${s.done}/${l.mod.length} · ort. ${Math.round(s.avg)}</span>${s.left ? `<div class="muted" style="font-size:12px;margin-top:4px">Kalan ${s.left} modülde ort. ${s.need} gerekli</div>` : s.failed ? `<div class="muted" style="font-size:12px;margin-top:4px">50 altı modülü tekrar et</div>` : ""}` : `<span class="tag">Başlanmadı</span>`}</div></div>`; }).join("")}</div>`;
+}
+
+/* Grup */
+function vGrup() {
+  const cfg = window.SPL_FIREBASE;
+  const head = `<div><h1 style="font-size:30px">Grup</h1><p class="muted" style="margin:6px 0 0">Herkes kendi temposunda çalışır. İsteyen ilerlemesini paylaşır; paylaşılanlar burada görünür. Paylaşılan bilgiler: adın, konu ilerleme yüzdeleri ve verdiğin SPL modül sınavları. Kapatırsan bilgilerin silinir.</p></div>`;
+  if (!cfg) return head + `<div class="card"><h2>Grup paylaşımı henüz açık değil</h2><p class="muted">Bu özellik için küçük bir ücretsiz veritabanı (Firebase) gerekiyor. Kurulum adımları <code>README.md</code> dosyasında. Kurulana kadar ilerlemen yine de bu tarayıcıda saklanır.</p></div>`;
+  return head + `<div class="card"><h2>Benim paylaşımım</h2><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="paylas" ${S.paylas ? "checked" : ""}> İlerlememi grupta göster</label><span class="muted" id="grupDurum" style="font-size:12.5px"></span></div></div>
+    <div class="card"><h2>Grup <small id="grupSay"></small></h2><div id="grupListe"><p class="empty">Yükleniyor…</p></div></div>`;
+}
+
+/* Rehber */
+function vRehber() {
+  return `<div><h1 style="font-size:30px">Rehber</h1></div>
+  <div class="grid">
+  <div class="card c6"><h2>Sınav kuralları (e-LS)</h2><ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px">
+    <li>Her modül ayrı sınavdır: <b>25 soru, 45 dakika</b>, bilgisayarda. Yanlışlar doğruyu götürmez.</li>
+    <li>Başarı: her modülden en az <b>50</b>, lisansın modüllerinin ortalaması en az <b>60</b>.</li>
+    <li>Sınav tarihini kendin seçersin (en erken 2 gün sonrası). Günde en fazla 6 modül. Ocak ve Temmuz'un ilk 15 günü sınav yok.</li>
+    <li>Aynı modüle tekrar girmek için en az 30 gün beklemen gerekir.</li>
+    <li>Notlar 3 yıl geçerli; daha eski notlar için yenileme eğitimi gerekir.</li>
+    <li>Ücret (25 yaş altı öğrenci): modül başına 548 ₺; normal 748 ₺ (2026 kılavuzu).</li>
+    <li>Sınava öğrenciyken girilebilir; lisans belgesi için 4 yıllık lisans mezuniyeti gerekir (Düzey 1 için 2 yıllık).</li>
+    <li>Düzey 3'e girmek için Düzey 1–2 gerekmez. Geniş Kapsamlı Mevzuat'ı geçen Dar Kapsamlı'dan da geçmiş sayılır.</li>
+  </ul></div>
+  <div class="card c6"><h2>Resmî kaynaklar</h2><div class="next">
+    <a class="nx" href="https://spl.com.tr/sinav-konulari-ve-alt-konu-basliklari/" target="_blank" rel="noopener"><span class="ic">1</span><div><b>Sınav konuları ve alt başlıklar</b><span>spl.com.tr</span></div></a>
+    <a class="nx" href="https://spl.com.tr/wp-content/uploads/2026/01/Elektronik-Lisanslama-Sinavlari-e-LS-Kilavuzu.pdf" target="_blank" rel="noopener"><span class="ic">2</span><div><b>e-LS Sınav Kılavuzu (PDF)</b><span>Kurallar, ücretler, puanlama</span></div></a>
+    <a class="nx" href="https://basvuru.spl.com.tr" target="_blank" rel="noopener"><span class="ic">3</span><div><b>SPL Başvuru Sistemi</b><span>Sınav başvurusu ve sonuçlar</span></div></a>
+    <a class="nx" href="https://spk.gov.tr" target="_blank" rel="noopener"><span class="ic">4</span><div><b>SPK mevzuatı</b><span>Tebliğlerin güncel metinleri</span></div></a>
+  </div></div>
+  <div class="card c6"><h2>Önerilen çalışma sırası</h2><ol style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px">
+    <li><b>Temel:</b> Mevzuat, SP Araçları 1, Yatırım Kuruluşları, Takas (bunlar Düzey 1'in de modülleri).</li>
+    <li><b>Piyasalar:</b> SP Araçları 2, Finansal Piyasalar, Ticaret Hukuku, Genel Ekonomi.</li>
+    <li><b>Sayısal:</b> Finans Matematiği, Finansal Yönetim, Muhasebe.</li>
+    <li><b>Son:</b> Vergilendirme ve Türev Araçlar.</li>
+  </ol><p class="muted" style="font-size:13px">Haftada 10–15 saatle Düzey 3 + Türev Araçlar yaklaşık 8–9 ay sürer. Bir modülün konularını bitirince 1–2 hafta içinde sınavına gir.</p></div>
+  <div class="card c6"><h2>Yedekleme</h2><p class="muted" style="font-size:13.5px">İlerlemen bu tarayıcıda saklanır. Başka cihaza taşımak için yedeği kopyala ve diğer cihazda içe aktar.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost sm" type="button" data-act="yedekAl">Yedeği kopyala</button><button class="btn ghost sm" type="button" data-act="yedekGoster">İçe aktar</button><button class="btn ghost sm" type="button" data-act="adDegis">Adımı değiştir</button></div>
+    <div id="yedekAlan" hidden style="margin-top:10px"><textarea id="yedekTxt" rows="4" style="width:100%;font:12px var(--f-m);background:var(--surface-2);color:var(--ink);border:1px solid var(--line-2);border-radius:9px;padding:8px" placeholder="Yedek metnini yapıştır"></textarea><button class="btn sm" type="button" data-act="yedekYukle" style="margin-top:6px">Yükle</button> <span id="yedekMsg" class="muted" style="font-size:12.5px"></span></div></div>
+  </div>
+  <p class="foot">Bu site öğrenciler tarafından çalışma amaçlı hazırlanmıştır; SPL veya SPK ile bağlantısı yoktur. İçerik resmî kaynakların yerini tutmaz, sınav öncesi güncel mevzuatı kontrol edin.</p>`;
+}
+
+/* ---------- Yönlendirme ---------- */
+function route() {
+  let h = (location.hash || "#ana").slice(1);
+  const isMod = /^m\d\d$/.test(h) && M(h);
+  if (!isMod && !NAV.some(n => n[0] === h)) h = "ana";
+  renderNav(isMod ? "moduller" : h);
+  let html;
+  if (isMod) html = vModul(h);
+  else html = { ana: vAna, moduller: vModuller, kartlar: () => vKartlar(KT_ONLY), deneme: vDeneme, sinavlar: vSinavlar, grup: vGrup, rehber: vRehber }[h]();
+  V.innerHTML = html;
+  if (h === "grup" && window.__grupOku) window.__grupOku();
+}
+let KT_ONLY = null, lastHash = "";
+addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h !== "kartlar") KT_ONLY = null; if (/^m\d\d$/.test(h) && h !== lastHash) { modTab = "konular"; } lastHash = h; route(); scrollTo(0, 0); });
+
+/* ---------- Olaylar ---------- */
+document.addEventListener("click", e => {
+  const tp = e.target.closest(".tp");
+  if (tp) { const k = tp.dataset.k; if (S.konu[k]) delete S.konu[k]; else S.konu[k] = today(); save(); const y = scrollY; route(); scrollTo(0, y); return; }
+  const mt = e.target.closest("#mtabs button"); if (mt) { modTab = mt.dataset.t; route(); return; }
+  const only = e.target.closest("[data-only]"); if (only) { KT_ONLY = only.dataset.only; KT = null; }
+  const a = e.target.closest("[data-act]"); if (!a) return;
+  const act = a.dataset.act;
+  if (act === "prSec") { const q = IC[PR.id].sorular[PR.sira[PR.i]]; PR.sec = +a.dataset.o; if (PR.sec === q.d) PR.dogru++; document.getElementById("pratik").innerHTML = pratikBody(PR.id); }
+  if (act === "prNext") { PR.i++; PR.sec = null; PR.perm = null; document.getElementById("pratik").innerHTML = pratikBody(PR.id); }
+  if (act === "prReset") { PR = null; document.getElementById("pratik").innerHTML = pratikBody(location.hash.slice(1)); }
+  if (act === "ktFlip") { KT.on = !KT.on; route(); }
+  if (act === "ktOk" || act === "ktNo") { const c = KT.list[KT.i]; rateCard(c.id, act === "ktOk"); if (act === "ktOk") KT.ok++; KT.i++; KT.on = false; route(); }
+  if (act === "ktAll") { KT = { only: KT_ONLY, list: shuffle(allCards(KT_ONLY ? [M(KT_ONLY)] : null)), i: 0, on: false, ok: 0 }; route(); }
+  if (act === "dnSec") { DN.cev[DN.i] = +a.dataset.o; route(); }
+  if (act === "dnNext") { DN.i = Math.min(DN.qs.length - 1, DN.i + 1); route(); }
+  if (act === "dnPrev") { DN.i = Math.max(0, DN.i - 1); route(); }
+  if (act === "dnGo") { DN.i = +a.dataset.i; route(); }
+  if (act === "dnBitir") dnBitir();
+  if (act === "dnYeni") { DN = null; route(); }
+  if (act === "adDegis") { S.ad = ""; save(); location.hash = "ana"; route(); }
+  if (act === "yedekAl") { const t = btoa(unescape(encodeURIComponent(JSON.stringify(S)))); navigator.clipboard?.writeText(t).then(() => { a.textContent = "Kopyalandı"; }, () => { const ar = document.getElementById("yedekAlan"); ar.hidden = false; document.getElementById("yedekTxt").value = t; }); }
+  if (act === "yedekGoster") document.getElementById("yedekAlan").hidden = false;
+  if (act === "yedekYukle") { try { const o = JSON.parse(decodeURIComponent(escape(atob(document.getElementById("yedekTxt").value.trim())))); S = Object.assign(blank(), o); save(); document.getElementById("yedekMsg").textContent = "Yüklendi."; } catch (_) { document.getElementById("yedekMsg").textContent = "Yedek metni okunamadı."; } }
+});
+document.addEventListener("submit", e => {
+  if (e.target.id === "adForm") { e.preventDefault(); S.ad = document.getElementById("adIn").value.trim().slice(0, 30); save(); route(); }
+  if (e.target.id === "dnForm") { e.preventDefault(); dnBaslat(document.getElementById("dnMod").value); route(); }
+});
+document.addEventListener("change", e => {
+  const t = e.target;
+  if (t.dataset.plan) { if (t.value) S.plan[t.dataset.plan] = t.value; else delete S.plan[t.dataset.plan]; save(); }
+  if (t.dataset.puan) { const id = t.dataset.puan; S.sinav[id] = S.sinav[id] || {}; S.sinav[id].puan = t.value === "" ? null : Math.max(0, Math.min(100, +t.value)); if (t.value !== "" && !S.sinav[id].tarih) S.sinav[id].tarih = today(); save(); route(); }
+  if (t.dataset.tarih) { const id = t.dataset.tarih; S.sinav[id] = S.sinav[id] || {}; S.sinav[id].tarih = t.value; save(); }
+  if (t.id === "paylas") { S.paylas = t.checked; save(); window.__grupYaz && window.__grupYaz(true); }
+});
+document.addEventListener("keydown", e => {
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName || "")) return;
+  const h = location.hash.slice(1);
+  if (h === "kartlar" && KT && KT.i < KT.list.length) { if (e.key === " ") { e.preventDefault(); KT.on = !KT.on; route(); } if (KT.on && (e.key === "1" || e.key === "2")) { const c = KT.list[KT.i]; const ok = e.key === "2"; rateCard(c.id, ok); if (ok) KT.ok++; KT.i++; KT.on = false; route(); } }
+});
+
+/* ---------- Tema ---------- */
+(() => {
+  const sw = document.getElementById("themeSw"), mb = document.getElementById("mTheme");
+  const get = () => { try { return localStorage.getItem("spl.tema") || "system"; } catch (_) { return "system"; } };
+  const ap = t => { if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); else document.documentElement.removeAttribute("data-theme"); sw.querySelectorAll("button").forEach(b => b.setAttribute("aria-checked", b.dataset.t === t)); mb.textContent = { system: "Tema: sistem", light: "Tema: açık", dark: "Tema: koyu" }[t]; };
+  const set = t => { try { localStorage.setItem("spl.tema", t); } catch (_) {} ap(t); };
+  ap(get());
+  sw.addEventListener("click", e => { const b = e.target.closest("button"); if (b) set(b.dataset.t); });
+  mb.addEventListener("click", () => set({ system: "light", light: "dark", dark: "system" }[get()]));
+})();
+
+/* ---------- Grup (Firebase, isteğe bağlı) ---------- */
+(() => {
+  const cfg = window.SPL_FIREBASE; if (!cfg) return;
+  let db = null, uid = null, ready = null;
+  const load = src => new Promise((ok, no) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+  function init() {
+    if (ready) return ready;
+    const v = "10.12.5", base = `https://www.gstatic.com/firebasejs/${v}/`;
+    ready = load(base + "firebase-app-compat.js").then(() => Promise.all([load(base + "firebase-auth-compat.js"), load(base + "firebase-firestore-compat.js")]))
+      .then(() => { firebase.initializeApp(cfg); db = firebase.firestore(); return firebase.auth().signInAnonymously(); })
+      .then(r => { uid = r.user.uid; });
+    return ready;
+  }
+  const ozet = () => {
+    const lic = {}; LIC.forEach(l => { const s = licStatus(l); lic[l.id] = { p: s.prog, done: s.done, ok: s.ok }; });
+    const mods = {}; MODS.forEach(m => { mods[m.id] = { p: modTopicPct(m), s: sinavPuan(m.id) }; });
+    return { ad: S.ad || "İsimsiz", lic, mods, kart: Object.keys(S.kart).length, deneme: S.deneme.length, son: firebase.firestore.FieldValue.serverTimestamp() };
+  };
+  const durum = t => { const el = document.getElementById("grupDurum"); if (el) el.textContent = t; };
+  window.__grupYaz = (force) => init().then(() => {
+    const ref = db.collection("spl_profiller").doc(uid);
+    if (S.paylas) return ref.set(ozet()).then(() => { durum("Paylaşılıyor · son güncelleme şimdi"); if (force) window.__grupOku(); });
+    if (force) return ref.delete().then(() => { durum("Paylaşım kapalı"); window.__grupOku(); });
+  }).catch(() => durum("Bağlanılamadı"));
+  window.__grupOku = () => init().then(() => db.collection("spl_profiller").get()).then(snap => {
+    const el = document.getElementById("grupListe"); if (!el) return;
+    const ps = snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => (b.lic?.d3?.p || 0) - (a.lic?.d3?.p || 0));
+    document.getElementById("grupSay").textContent = `${ps.length} kişi paylaşıyor`;
+    el.innerHTML = ps.length ? ps.map(p => { const passed = Object.values(p.mods || {}).filter(x => x.s >= 50).length;
+      return `<div class="row"><span class="avatar" style="background:hsl(${hue(p.ad)} 45% 42%)">${esc((p.ad || "?")[0].toUpperCase())}</span><div class="grow"><b>${esc(p.ad)}${p.id === uid ? " (sen)" : ""}</b><div class="muted" style="font-size:12px">${passed} modül sınavı geçti · ${p.kart || 0} kart · ${p.deneme || 0} deneme${p.son?.toDate ? ` · ${p.son.toDate().toLocaleDateString("tr-TR")}` : ""}</div></div>
+        <div style="width:160px"><div style="display:flex;justify-content:space-between;font-size:11.5px"><span class="muted">Düzey 3</span><b>%${p.lic?.d3?.p || 0}</b></div>${bar(p.lic?.d3?.p || 0)}<div style="display:flex;justify-content:space-between;font-size:11.5px;margin-top:6px"><span class="muted">Türev</span><b>%${p.lic?.tv?.p || 0}</b></div>${bar(p.lic?.tv?.p || 0)}</div></div>`; }).join("") : `<p class="empty">Henüz kimse paylaşmıyor.</p>`;
+    durum(S.paylas ? "Paylaşılıyor" : "Paylaşım kapalı");
+  }).catch(() => { const el = document.getElementById("grupListe"); if (el) el.innerHTML = `<p class="empty">Grup bilgisi alınamadı.</p>`; });
+  if (S.paylas) setTimeout(() => window.__grupYaz(), 2000);
+})();
+
+route();
+})();
+</script>
+</body>
+</html>
