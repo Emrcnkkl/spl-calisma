@@ -92,9 +92,9 @@ input[type=text],input[type=number],input[type=date],select{font:inherit;color:v
 .row{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
 .row .grow{flex:1;min-width:0}
-.ring{--p:0;width:92px;height:92px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(closest-side,var(--bg) 82%,transparent 83%),conic-gradient(var(--acc) calc(var(--p)*1%),var(--line-2) 0)}
+.ring{--p:0;width:92px;height:92px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(closest-side,var(--surface) 82%,transparent 83%),conic-gradient(var(--acc) calc(var(--p)*1%),var(--line-2) 0)}
 .ring b{font:700 20px var(--f-d)}
-.ring.am{background:radial-gradient(closest-side,var(--bg) 82%,transparent 83%),conic-gradient(var(--amber) calc(var(--p)*1%),var(--line-2) 0)}
+.ring.am{background:radial-gradient(closest-side,var(--surface) 82%,transparent 83%),conic-gradient(var(--amber) calc(var(--p)*1%),var(--line-2) 0)}
 /* Ana sayfa */
 .hero{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;justify-content:space-between;padding:8px 0 22px;border-bottom:1px solid var(--line)}
 .hero h1{font-size:clamp(30px,3.6vw,44px);letter-spacing:-.025em}
@@ -187,6 +187,78 @@ td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
 td input[type=number]{width:80px} td input[type=date]{width:150px}
 .avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:700 14px var(--f-d);color:#fff;flex:none}
 .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+/* Modül renkleri: öğede style="--h:açı" */
+.hu{--c:hsl(var(--h) 58% 42%);--cs:hsl(var(--h) 75% 95%);--cl:hsl(var(--h) 55% 42% / .22)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hu{--c:hsl(var(--h) 80% 74%);--cs:hsl(var(--h) 45% 55% / .14);--cl:hsl(var(--h) 70% 70% / .25)}}
+:root[data-theme="dark"] .hu{--c:hsl(var(--h) 80% 74%);--cs:hsl(var(--h) 45% 55% / .14);--cl:hsl(var(--h) 70% 70% / .25)}
+.mi{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--cs);color:var(--c);border:1px solid var(--cl);flex:none}
+.mi svg{width:21px;height:21px}
+.mi.lg{width:64px;height:64px;border-radius:18px} .mi.lg svg{width:32px;height:32px}
+.mi.sm{width:32px;height:32px;border-radius:10px} .mi.sm svg{width:17px;height:17px}
+/* Karşılama alanı */
+.banner{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:22px;padding:28px 30px;background:linear-gradient(120deg,var(--acc-soft),var(--surface) 55%,var(--amber-soft));box-shadow:var(--shadow)}
+.banner>*{position:relative;z-index:1}
+.banner .art{position:absolute;right:-10px;bottom:-6px;width:min(520px,70%);height:auto;z-index:0;opacity:.4;pointer-events:none}
+.banner.hero{border-bottom:1px solid var(--line);padding:28px 30px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{display:flex;gap:12px;align-items:center;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.stat b{display:block;font:700 22px/1.1 var(--f-d)}
+.stat span{font-size:12px;color:var(--muted)}
+/* Modül kartı ve başlığı */
+.mod{position:relative;overflow:hidden}
+.mod::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--c)}
+.mod .bar>i,.mban .bar>i{background:var(--c)}
+.mod .num{font:600 11px var(--f-m);color:var(--muted)}
+.mban{display:flex;flex-wrap:wrap;gap:18px 22px;align-items:center;padding:22px 24px;border-radius:20px;border:1px solid var(--cl);background:linear-gradient(130deg,var(--cs),var(--surface) 70%);box-shadow:var(--shadow)}
+.mban .tx{flex:1 1 360px;min-width:0}
+.mban h1{font-size:clamp(22px,2.5vw,30px)}
+.mban p{margin:8px 0 0;color:var(--muted);max-width:70ch}
+.mban .pg{flex:0 1 240px;min-width:200px}
+.minis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.mini{padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.mini b{display:block;font:700 20px/1.1 var(--f-d)} .mini span{font-size:12px;color:var(--muted)}
+.tips{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.tips li{display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.tips li::before{content:"";flex:none;width:8px;height:8px;margin-top:7px;border-radius:50%;background:var(--c,var(--acc));box-shadow:0 0 0 4px var(--cs,var(--acc-soft))}
+.links{display:flex;flex-direction:column}
+.lnk{display:flex;gap:12px;align-items:center;padding:10px 6px;border-top:1px solid var(--line);text-decoration:none;color:var(--ink);border-radius:8px}
+.lnk:first-child{border-top:0}
+.lnk:hover{background:var(--surface-2)}
+.lnk .ex{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--surface-2);border:1px solid var(--line);color:var(--muted);flex:none}
+.lnk .ex svg{width:15px;height:15px}
+.lnk b{display:block;font-size:13.5px;font-weight:600} .lnk small{font-size:12px;color:var(--muted)}
+.lnk.yt .ex{color:#fff;background:#D93025;border-color:transparent}
+.figs{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.fig{margin:0;padding:14px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
+.fig h3{font-size:15px}
+.fig figcaption{font-size:12.5px;color:var(--muted);line-height:1.5}
+.fig svg{width:100%;height:auto;display:block}
+.fig svg text{font:500 10.5px var(--f-b);fill:var(--muted)}
+.fig svg .ax{stroke:var(--line-2);stroke-width:1}
+.fig svg .gr{stroke:var(--line);stroke-width:1}
+.fig svg .l1{stroke:var(--c,var(--acc));stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fig svg .l2{stroke:var(--amber);stroke-width:2;fill:none;stroke-dasharray:5 4;stroke-linecap:round}
+.fig svg .l3{stroke:var(--muted);stroke-width:1.4;fill:none;stroke-dasharray:3 4}
+.fig svg .dot{fill:var(--c,var(--acc))} .fig svg .dot2{fill:var(--amber)}
+.fig svg .tc{fill:var(--ink);font-weight:600}
+.flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:6px 0}
+.flow .bx{padding:9px 12px;border-radius:11px;background:var(--surface);border:1px solid var(--line-2);font-size:12.5px;font-weight:600;text-align:center;line-height:1.3}
+.flow .bx small{display:block;font-weight:500;color:var(--muted);font-size:11px}
+.flow .bx.k{background:var(--cs,var(--acc-soft));border-color:var(--c,var(--acc));color:var(--ink)}
+.flow .ar{color:var(--c,var(--acc));font-weight:700}
+.tree{display:flex;flex-direction:column;align-items:center;gap:0}
+.tree .kids{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding-top:14px;position:relative;border-top:2px solid var(--cl,var(--line-2));margin-top:14px}
+.tree .root{position:relative}
+.tree .root::after{content:"";position:absolute;left:50%;bottom:-16px;height:14px;border-left:2px solid var(--cl,var(--line-2))}
+.bal{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}
+.bal .col{display:flex;flex-direction:column;gap:4px}
+.bal .col div{border-radius:9px;padding:8px;font-size:12px;font-weight:600;text-align:center;display:grid;place-items:center}
+.bal .eq{display:grid;place-items:center;font:700 20px var(--f-d);color:var(--muted)}
+.forms{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.form{padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--c,var(--acc))}
+.form span{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+.form code{font:600 13.5px/1.5 var(--f-m);color:var(--ink);white-space:pre-wrap}
+@media (max-width:820px){ .stats,.minis{grid-template-columns:repeat(2,minmax(0,1fr))} .banner{padding:22px 20px} .banner .art{width:90%;opacity:.3} .mban{padding:18px} }
 /* Telefon */
 .mtop{display:none}
 @media (max-width:1000px){ .c4,.c5,.c6,.c7,.c8{grid-column:span 12} .lic{grid-template-columns:repeat(2,minmax(0,1fr))} }
@@ -204,7 +276,6 @@ td input[type=number]{width:80px} td input[type=date]{width:150px}
   .mtop .logo b{font:700 17px var(--f-d);letter-spacing:-.01em;text-transform:none;opacity:1}
   .mtop button{all:unset;cursor:pointer;padding:6px 10px;border-radius:9px;border:1px solid var(--line);font-size:12px}
   main{padding:16px max(16px,env(safe-area-inset-right,0px)) calc(90px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-  .hero{padding:20px}
   .lic{grid-template-columns:minmax(0,1fr)}
   .ring{width:76px;height:76px}
 }
@@ -229,6 +300,7 @@ td input[type=number]{width:80px} td input[type=date]{width:150px}
 <script>window.SPL = { icerik: {}, ekle(id, o) { this.icerik[id] = o; } };</script>
 <script src="config.js"></script>
 <script src="veri/moduller.js"></script>
+<script src="veri/detay.js"></script>
 <script src="veri/m01.js"></script><script src="veri/m02.js"></script><script src="veri/m03.js"></script><script src="veri/m04.js"></script>
 <script src="veri/m05.js"></script><script src="veri/m06.js"></script><script src="veri/m07.js"></script><script src="veri/m08.js"></script>
 <script src="veri/m09.js"></script><script src="veri/m10.js"></script><script src="veri/m11.js"></script><script src="veri/m12.js"></script>
@@ -315,6 +387,70 @@ function renderNav(cur) {
   document.getElementById("nav").innerHTML = NAV.map(([id, l]) => `<a href="#${id}" ${cur === id ? 'aria-current="page"' : ""}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${IKON[id]}</svg><span class="nl" data-s="${NAV_KISA[id] || l}">${l}</span>${id === "kartlar" && due ? `<span class="bdg">${due > 99 ? "99+" : due}</span>` : ""}</a>`).join("");
 }
 
+/* ---------- Modül renkleri, simgeler ve şekiller ---------- */
+const DT = window.SPL_DETAY || {};
+const SV = (p, sw = 1.7) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+const hs = id => `style="--h:${DT[id]?.h ?? 228}"`;
+const mIcon = (id, cls = "") => `<span class="mi ${cls}">${SV(DT[id]?.i || "")}</span>`;
+const EXT = '<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>';
+const PLAY = '<path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none"/>';
+let pid = 0;
+/* Basit grafik: x/y aralığı, eğriler (fonksiyon ya da nokta listesi), işaretler */
+function plot({ x: [x0, x1], y: [y0, y1], xl, yl, lines = [], dots = [], vx = [], notes = [] }) {
+  const W = 320, H = 196, L = 34, R = 10, T = 12, B = 30, id = "c" + (++pid);
+  const X = v => L + (v - x0) / (x1 - x0) * (W - L - R), Y = v => T + (1 - (v - y0) / (y1 - y0)) * (H - T - B);
+  const ya = y0 <= 0 && y1 >= 0 ? Y(0) : H - B;
+  const path = ln => { const pts = ln.pts || Array.from({ length: 121 }, (_, i) => { const x = x0 + (x1 - x0) * i / 120; return [x, ln.f(x)]; }); return pts.filter(p => isFinite(p[1])).map((p, i) => `${i ? "L" : "M"}${X(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join(""); };
+  return `<svg viewBox="0 0 ${W} ${H}" role="img"><defs><clipPath id="${id}"><rect x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}"/></clipPath></defs>
+    <line class="ax" x1="${L}" y1="${T}" x2="${L}" y2="${H - B}"/><line class="ax" x1="${L}" y1="${ya}" x2="${W - R}" y2="${ya}"/>
+    ${vx.map(v => `<line class="l3" x1="${X(v[0])}" y1="${T}" x2="${X(v[0])}" y2="${H - B}"/><text x="${X(v[0])}" y="${H - B + 13}" text-anchor="middle">${v[1]}</text>`).join("")}
+    <g clip-path="url(#${id})">${lines.map(ln => `<path class="${ln.c || "l1"}" d="${path(ln)}"/>`).join("")}</g>
+    ${dots.map(d => `<circle class="${d.c || "dot"}" cx="${X(d.x)}" cy="${Y(d.y)}" r="4"/>${d.t ? `<text class="tc" x="${X(d.x) + (d.dx ?? 7)}" y="${Y(d.y) + (d.dy ?? -7)}" text-anchor="${d.a || "start"}">${d.t}</text>` : ""}`).join("")}
+    ${notes.map(n => `<text x="${X(n.x)}" y="${Y(n.y)}" text-anchor="${n.a || "start"}" ${n.c ? `class="${n.c}"` : ""}>${n.t}</text>`).join("")}
+    <text x="${W - R}" y="${H - 6}" text-anchor="end">${xl}</text><text x="${L - 6}" y="${T + 2}" text-anchor="end" transform="rotate(-90 ${L - 6} ${T + 2})" dy="-14">${yl}</text></svg>`;
+}
+const box = (t, s, k) => `<div class="bx${k ? " k" : ""}">${t}${s ? `<small>${s}</small>` : ""}</div>`;
+const chain = items => `<div class="flow">${items.map((it, i) => (i ? `<span class="ar">→</span>` : "") + box(...it)).join("")}</div>`;
+const tree = (root, kids) => `<div class="tree"><div class="root">${box(root[0], root[1], true)}</div><div class="kids">${kids.map(k => box(...k)).join("")}</div></div>`;
+const fig = (t, body, cap) => ({ t, body, cap });
+const npv = r => -100 + 30 * (r ? (1 - Math.pow(1 + r / 100, -5)) / (r / 100) : 5);
+const bond = y => { const r = y / 100, c = 10, n = 10; return c * (1 - Math.pow(1 + r, -n)) / r + 100 * Math.pow(1 + r, -n); };
+const FR = (() => { const pts = []; let best = null; for (let m = 3; m <= 21; m += .25) { const s = Math.sqrt(36 + 1.6 * (m - 8) ** 2); pts.push([s, m]); const sh = (m - 3) / s; if (m >= 8 && (!best || sh > best.sh)) best = { s, m, sh }; } return { pts, best }; })();
+const SEKIL = {
+  yapi: () => fig("Sermaye piyasasının düzenleyici yapısı", tree(["Sermaye Piyasası Kurulu", "düzenleme ve denetim"], [["Borsa İstanbul", "piyasalar"], ["Takasbank", "takas, MKT"], ["MKK", "kaydi sistem"], ["TSPB", "öz düzenleme"], ["YTM", "yatırımcı tazmini"], ["KAP", "kamuyu aydınlatma"]]), "SPK kuralları koyar ve denetler; altyapı kurumları işlemlerin yapıldığı, kaydedildiği ve takas edildiği sistemleri işletir."),
+  araclar: () => fig("Sermaye piyasası araçları", tree(["Sermaye piyasası araçları", "SPKn md. 3"], [["Paylar", "ortaklık hakkı"], ["Borçlanma araçları", "tahvil, bono"], ["Fon katılma payları", "yatırım fonları"], ["Türev araçlar", "vadeli, opsiyon"], ["Kamu borçlanma", "DİBS, eurobond"]]), "Her aracı yatırımcıya verdiği hak (ortaklık, alacak, fon payı, sözleşme) üzerinden ayırt et."),
+  sukuk: () => fig("Kira sertifikası (sahipliğe dayalı)", chain([["Kaynak kuruluş", "varlığı devreder"], ["Varlık kiralama şirketi", "sertifikayı ihraç eder", true], ["Yatırımcı", "kira gelirini alır"]]) + `<p class="muted" style="margin:6px 0 0;font-size:12.5px;text-align:center">Kaynak kuruluş varlığı kiralar, kira ödemeleri yatırımcıya aktarılır; vade sonunda varlık geri satın alınır.</p>`, "Faiz yerine kira/kâr payı geliri doğar; temel fark getirinin bir varlığa dayanmasıdır."),
+  hizmet: () => fig("Yatırım hizmetleri ve yan hizmetler", tree(["Aracı kurum", "yetki belgesine göre"], [["Emir iletimi"], ["İşlem aracılığı"], ["Portföy aracılığı"], ["Bireysel portföy yöneticiliği"], ["Yatırım danışmanlığı"], ["Halka arza aracılık"], ["Saklama", "yan hizmet"], ["Kredi ve ödünç", "yan hizmet"]]), "Hangi faaliyet için hangi yetki belgesinin ve asgari özsermayenin gerektiğini ayrı ayrı öğren."),
+  piyasa: () => fig("Borsa İstanbul ve diğer platformlar", tree(["Borsa İstanbul", "organize piyasa"], [["Pay Piyasası", "T+2"], ["Borçlanma Araçları Piyasası", "kesin alım-satım, repo"], ["VİOP", "vadeli ve opsiyon"], ["Kıymetli Madenler", ""], ["TEFAS / BEFAS", "fon platformları"], ["TCMB ve bankalararası", "para piyasaları"]]), "Organize piyasalar ile tezgâhüstü (OTC) piyasaların farkı: standart sözleşme, merkezi karşı taraf ve şeffaflık."),
+  takas: () => fig("Bir pay alımının yolculuğu", chain([["Yatırımcı", "emir verir"], ["Aracı kurum", "emri iletir"], ["Borsa İstanbul", "eşleşme (T)"], ["Takasbank", "nakit · MKT", true], ["MKK", "kıymet kaydı (T+2)", true]]), "Teslim karşılığı ödeme: nakit Takasbank'ta, pay MKK'da aynı anda el değiştirir."),
+  organ: () => fig("Anonim şirket organları", tree(["Genel kurul", "pay sahipleri · en üst karar organı"], [["Yönetim kurulu", "yönetim ve temsil"], ["Komiteler", "denetimden sorumlu, riskin erken saptanması"], ["Denetçi", "bağımsız denetim"]]), "Devredilemez yetkiler: esas sözleşme değişikliği genel kurulda; üst düzey yönetim ve şirket stratejisi yönetim kurulunda."),
+  bilanco: () => fig("Bilanço denklemi", `<div class="bal"><div class="col"><div style="background:var(--acc-soft);height:58px">Dönen varlıklar</div><div style="background:var(--acc-soft);height:70px">Duran varlıklar</div></div><div class="eq">=</div><div class="col"><div style="background:var(--amber-soft);height:34px">Kısa vadeli yabancı kaynaklar</div><div style="background:var(--amber-soft);height:30px">Uzun vadeli yabancı kaynaklar</div><div style="background:var(--surface);border:1px solid var(--line-2);height:56px">Özkaynaklar</div></div></div>`, "Varlıklar (aktif) her zaman kaynakların (pasif) toplamına eşittir; her kayıt bu dengeyi korur."),
+  vergi: () => fig("Vergilendirme süreci", chain([["Tarh", "verginin hesaplanması"], ["Tebliğ", "mükellefe bildirim"], ["Tahakkuk", "ödenecek hâle gelme"], ["Tahsil", "ödeme", true]]), "Sıralama sık sorulur: tarh → tebliğ → tahakkuk → tahsil."),
+  npv: () => fig("NBD profili ve iç verim oranı", plot({ x: [0, 40], y: [-40, 55], xl: "iskonto oranı %", yl: "NBD", lines: [{ f: npv }], dots: [{ x: 15.24, y: 0, t: "İVO ≈ %15,2", dy: -9 }], notes: [{ x: 2, y: 48, t: "100 yatırım, 5 yıl × 30 nakit akışı" }] }), "İskonto oranı arttıkça NBD düşer. NBD'yi sıfır yapan oran iç verim oranıdır; proje, sermaye maliyeti İVO'dan düşükse kabul edilir."),
+  arztalep: () => fig("Arz, talep ve denge", plot({ x: [0, 9], y: [0, 12], xl: "miktar (Q)", yl: "fiyat (P)", lines: [{ f: q => 10 - q }, { f: q => 2 + q, c: "l3" }, { f: q => 12 - q, c: "l2" }], dots: [{ x: 4, y: 6, t: "E₁" }, { x: 5, y: 7, t: "E₂", c: "dot2" }], notes: [{ x: .3, y: 9.2, t: "D" }, { x: 2.3, y: 10.9, t: "D′" }, { x: 8, y: 9.6, t: "S" }] }), "Talep artışı (D → D′) denge fiyatını ve miktarını birlikte yükseltir."),
+  phillips: () => fig("Phillips eğrisi", plot({ x: [2, 13], y: [0, 10], xl: "işsizlik %", yl: "enflasyon %", lines: [{ f: u => 30 / u - 2 }], dots: [{ x: 5, y: 4, t: "kısa dönem ödünleşim" }] }), "Kısa dönemde düşük işsizlik daha yüksek enflasyonla birlikte görülür; uzun dönemde eğri dikeyleşir."),
+  sinir: () => { const b = FR.best; return fig("Etkin sınır ve sermaye piyasası doğrusu", plot({ x: [0, 20], y: [0, 22], xl: "risk (σ)", yl: "beklenen getiri", lines: [{ pts: FR.pts.filter(p => p[1] >= 8) }, { pts: FR.pts.filter(p => p[1] <= 8), c: "l3" }, { f: s => 3 + b.sh * s, c: "l2" }], dots: [{ x: 0, y: 3, t: "R_f", c: "dot2" }, { x: b.s, y: b.m, t: "M (pazar portföyü)", dx: 8, dy: 14 }, { x: 6, y: 8, t: "min. varyans", dy: 16 }] }), "Etkin sınırın üstündeki portföyler aynı risk için en yüksek getiriyi verir. Risksiz faizden pazar portföyüne çizilen doğru SPD'dir."); },
+  tahvil: () => { const d = (bond(10.01) - bond(9.99)) / .02; return fig("Tahvil fiyatı ve faiz", plot({ x: [2, 24], y: [40, 190], xl: "piyasa faizi %", yl: "fiyat", lines: [{ f: bond }, { f: y => 100 + d * (y - 10), c: "l2" }], dots: [{ x: 10, y: 100, t: "kupon = faiz → başa baş (100)" }] }), "%10 kuponlu 10 yıllık tahvil. Faiz artınca fiyat düşer; kesikli çizgi durasyonla doğrusal tahmindir, aradaki fark konvekslik."); },
+  opsiyon: () => [
+    fig("Alım opsiyonu (call): kâr/zarar", plot({ x: [60, 140], y: [-30, 40], xl: "vadede dayanak fiyatı", yl: "kâr / zarar", vx: [[100, "K=100"]], lines: [{ f: s => Math.max(s - 100, 0) - 8 }, { f: s => -(Math.max(s - 100, 0) - 8), c: "l2" }], dots: [{ x: 108, y: 0, t: "başabaş 108", dy: 16 }], notes: [{ x: 62, y: -19, t: "uzun: en fazla prim (8) kaybı" }, { x: 62, y: 19, t: "kısa: en fazla prim kazancı" }] }), "Düz çizgi alıcı (uzun), kesikli çizgi satıcı (kısa). Başabaş = kullanım fiyatı + prim."),
+    fig("Satım opsiyonu (put): kâr/zarar", plot({ x: [60, 140], y: [-30, 40], xl: "vadede dayanak fiyatı", yl: "kâr / zarar", vx: [[100, "K=100"]], lines: [{ f: s => Math.max(100 - s, 0) - 6 }, { f: s => -(Math.max(100 - s, 0) - 6), c: "l2" }], dots: [{ x: 94, y: 0, t: "başabaş 94", a: "end", dx: -7, dy: 16 }] }), "Put alıcısı düşüşten kazanır. Başabaş = kullanım fiyatı − prim (100 − 6).")],
+  vadeli: () => fig("Vadeli işlem: uzun ve kısa pozisyon", plot({ x: [70, 130], y: [-30, 30], xl: "vadede fiyat", yl: "kâr / zarar", vx: [[100, "F₀=100"]], lines: [{ f: s => s - 100 }, { f: s => 100 - s, c: "l2" }], notes: [{ x: 118, y: 24, t: "uzun", c: "tc" }, { x: 118, y: -24, t: "kısa", c: "tc" }] }), "Vadeli işlemde kâr/zarar doğrusaldır ve simetriktir; opsiyondaki gibi prim ödenmez ama iki taraf da yükümlüdür.")
+};
+const sekiller = id => (DT[id]?.sekil || []).flatMap(k => SEKIL[k] ? [].concat(SEKIL[k]()) : []);
+const figHtml = f => `<figure class="fig"><h3>${f.t}</h3>${f.body}<figcaption>${f.cap}</figcaption></figure>`;
+const linkHtml = l => `<a class="lnk" href="${esc(l.u)}" target="_blank" rel="noopener"><span class="ex">${SV(EXT)}</span><div class="grow"><b>${esc(l.t)}</b>${l.n ? `<small>${esc(l.n)}</small>` : ""}</div>${l.en ? `<span class="tag">EN</span>` : ""}</a>`;
+const ytHtml = q => `<a class="lnk yt" href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" rel="noopener"><span class="ex">${SV(PLAY)}</span><div class="grow"><b>YouTube'da konu anlatımı ara</b><small>“${esc(q)}”</small></div></a>`;
+/* Karşılama alanı süsü: mum grafiği ve yükselen çizgi */
+function heroArt() {
+  const c = [[40, 52, 30, 1], [56, 64, 46, 1], [62, 60, 50, 0], [58, 72, 52, 1], [70, 80, 64, 1], [76, 74, 66, 0], [72, 88, 70, 1], [86, 98, 80, 1], [94, 92, 84, 0], [90, 108, 88, 1], [104, 118, 100, 1], [114, 126, 108, 1]];
+  const X = i => 20 + i * 40, Y = v => 150 - v;
+  return `<svg class="art" viewBox="0 0 500 160" aria-hidden="true"><defs><linearGradient id="hg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--acc)" stop-opacity=".35"/><stop offset="1" stop-color="var(--acc)" stop-opacity="0"/></linearGradient></defs>
+    ${[30, 70, 110].map(y => `<line x1="0" x2="500" y1="${y}" y2="${y}" stroke="var(--line-2)" stroke-dasharray="2 6"/>`).join("")}
+    <path d="M${c.map((k, i) => `${X(i)},${Y(k[0])}`).join(" L")} L${X(c.length - 1)},160 L${X(0)},160Z" fill="url(#hg)"/>
+    ${c.map((k, i) => { const up = k[3], o = up ? k[0] - 8 : k[0] + 6; return `<line x1="${X(i)}" x2="${X(i)}" y1="${Y(k[1])}" y2="${Y(k[2] - 6)}" stroke="${up ? "var(--acc)" : "var(--amber)"}" stroke-width="1.5"/><rect x="${X(i) - 7}" y="${Y(Math.max(o, k[0]))}" width="14" height="${Math.abs(k[0] - o)}" rx="2" fill="${up ? "var(--acc)" : "var(--amber)"}"/>`; }).join("")}
+    <path d="M${c.map((k, i) => `${X(i)},${Y(k[0])}`).join(" L")}" fill="none" stroke="var(--acc)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
 /* ---------- Görünümler ---------- */
 const V = document.getElementById("view");
 const ring = (p, label, cls = "") => `<div class="r"><div class="ring ${cls}" style="--p:${p}"><b>${p}<small style="font-size:11px">%</small></b></div>${esc(label)}</div>`;
@@ -326,14 +462,22 @@ function vAna() {
   const nt = nextTopic(), due = dueCards().length;
   const lastD = S.deneme.slice(-1)[0];
   const upcoming = MODS.filter(m => S.plan[m.id] && daysUntil(S.plan[m.id]) >= 0 && sinavPuan(m.id) == null).sort((a, b) => S.plan[a.id].localeCompare(S.plan[b.id])).slice(0, 4);
+  const nKonu = Object.keys(S.konu).length, tKonu = MODS.reduce((a, m) => a + m.alt.length, 0), tKart = allCards().length, bild = allCards().filter(c => cardState(c.id).k >= 2).length;
+  const stat = (h, ic, v, l) => `<div class="stat hu" style="--h:${h}"><span class="mi sm">${SV(ic)}</span><div><b>${v}</b><span>${l}</span></div></div>`;
   return `
-  <section class="hero">
+  <section class="hero banner">${heroArt()}
     <div><h1>Merhaba ${esc(S.ad)}</h1><p>${nt ? `Sıradaki konu: <b>${esc(nt.m.kisa)}</b> · ${esc(nt.a.k)} ${esc(nt.a.t)}` : "Tüm konular işaretli. Deneme sınavlarıyla pekiştir."}</p></div>
     <div class="rings">${ring(d3.prog, "Düzey 3")}${ring(tv.prog, "Türev Araçlar", "am")}</div>
   </section>
+  <div class="stats">
+    ${stat(228, '<path d="M4 12l5 5L20 6"/>', `${nKonu}<small class="muted" style="font:500 13px var(--f-b)"> / ${tKonu}</small>`, "işaretli konu")}
+    ${stat(32, IKON.kartlar, `${bild}<small class="muted" style="font:500 13px var(--f-b)"> / ${tKart}</small>`, "öğrenilmiş kart")}
+    ${stat(330, IKON.deneme, S.deneme.length, "çözülen deneme")}
+    ${stat(174, IKON.sinavlar, MODS.filter(m => sinavPuan(m.id) >= 50).length + `<small class="muted" style="font:500 13px var(--f-b)"> / 13</small>`, "geçilen modül")}
+  </div>
   <div class="grid">
     <div class="card c7"><h2>Bugün ne yapayım?</h2><div class="next">
-      ${nt ? `<a class="nx" href="#${nt.m.id}"><span class="ic">${esc(nt.m.no)}</span><div><b>${esc(nt.a.k)} ${esc(nt.a.t)}</b><span>${esc(nt.m.kisa)} · konuyu çalış, özeti oku, işaretle</span></div></a>` : ""}
+      ${nt ? `<a class="nx hu" ${hs(nt.m.id)} href="#${nt.m.id}">${mIcon(nt.m.id, "sm")}<div><b>${esc(nt.a.k)} ${esc(nt.a.t)}</b><span>${esc(nt.m.kisa)} · konuyu çalış, özeti oku, işaretle</span></div></a>` : ""}
       <a class="nx" href="#kartlar"><span class="ic">${due}</span><div><b>${due ? `${due} kart tekrar bekliyor` : "Bugünlük kart tekrarı bitti"}</b><span>Unuttuğun kartlar daha sık karşına çıkar</span></div></a>
       <a class="nx" href="#deneme"><span class="ic">25</span><div><b>Deneme sınavı çöz</b><span>${lastD ? `Son deneme: ${esc(M(lastD.m)?.kisa || "Karışık")} · ${lastD.puan} puan` : "Gerçek sınav gibi: 25 soru, 45 dakika"}</span></div></a>
     </div></div>
@@ -347,32 +491,47 @@ function vAna() {
   </div>`;
 }
 function vHosgeldin() {
-  return `<section class="hero"><div><h1>SPL Çalışma'ya hoş geldin</h1><p>Düzey 3 ve Türev Araçlar lisanslarının 13 modülü için konu takibi, özetler, tekrar kartları ve deneme sınavları. İlerlemen yalnızca bu tarayıcıda saklanır; istersen Grup sayfasından arkadaşlarınla paylaşabilirsin.</p></div></section>
+  return `<section class="hero banner">${heroArt()}<div><h1>SPL Çalışma'ya hoş geldin</h1><p>Düzey 3 ve Türev Araçlar lisanslarının 13 modülü için konu takibi, özetler, tekrar kartları ve deneme sınavları. İlerlemen yalnızca bu tarayıcıda saklanır; istersen Grup sayfasından arkadaşlarınla paylaşabilirsin.</p></div></section>
   <div class="card" style="max-width:520px"><h2>Sana nasıl hitap edelim?</h2><form id="adForm" style="display:flex;gap:10px;flex-wrap:wrap"><input type="text" id="adIn" placeholder="Adın" required maxlength="30" style="flex:1"><button class="btn" type="submit">Başla</button></form></div>`;
 }
 function vModuller() {
   return `<div><h1 style="font-size:30px">Modüller</h1><p class="muted" style="margin:6px 0 0">Düzey 3'ün 12 modülü + Türev Araçlar modülü. Mevzuat modülü Düzey 1'deki "Dar Kapsamlı" sınavın yerine de geçer.</p></div>
   <div class="mods">${MODS.map(m => { const p = modTopicPct(m), b = bestDeneme(m.id), sp = sinavPuan(m.id), lic = LIC.filter(l => l.mod.includes(m.id)).map(l => l.ad);
-    return `<a class="mod" href="#${m.id}"><div class="top"><span class="no">${m.no}</span><h3>${esc(m.kisa)}</h3></div>
+    return `<a class="mod hu" ${hs(m.id)} href="#${m.id}"><div class="top">${mIcon(m.id)}<div><span class="num">MODÜL ${m.no}</span><h3>${esc(m.kisa)}</h3></div></div>
       <div class="meta">${lic.map(x => `<span class="tag">${esc(x)}</span>`).join("")}</div>
       ${bar(p)}<div class="st"><span>Konular %${p} · ${m.alt.length} başlık</span><span>${sp != null ? `<span class="tag ${sp >= 50 ? "ok" : "no"}">SPL ${sp}</span>` : b != null ? `Deneme en iyi ${b}` : `${(IC[m.id]?.sorular || []).length} soru`}</span></div></a>`; }).join("")}</div>`;
 }
 
-let modTab = "konular";
+let modTab = "genel";
 function vModul(id) {
   const m = M(id), c = IC[id] || {};
   const p = modTopicPct(m), lic = LIC.filter(l => l.mod.includes(id)).map(l => l.ad);
-  const tabs = [["konular", `Konular (${m.alt.length})`], ["ozet", "Özet"], ["kartlar", `Kartlar (${(c.kartlar || []).length})`], ["sorular", `Sorular (${(c.sorular || []).length})`]];
+  const dt = DT[id] || {};
+  const tabs = [["genel", "Genel bakış"], ["konular", `Konular (${m.alt.length})`], ["ozet", "Özet"], ["kartlar", `Kartlar (${(c.kartlar || []).length})`], ["sorular", `Sorular (${(c.sorular || []).length})`]];
   let body = "";
+  if (modTab === "genel") { const figs = sekiller(id), bd = bestDeneme(id);
+    body = `<div class="minis">
+      <div class="mini"><b>%${p}</b><span>konular işaretli</span></div>
+      <div class="mini"><b>${(c.kartlar || []).filter((_, i) => cardState(`${id}:${i}`).k >= 2).length}/${(c.kartlar || []).length}</b><span>kart öğrenildi</span></div>
+      <div class="mini"><b>${(c.sorular || []).length}</b><span>çalışma sorusu</span></div>
+      <div class="mini"><b>${sinavPuan(id) ?? bd ?? "–"}</b><span>${sinavPuan(id) != null ? "SPL puanın" : "en iyi deneme"}</span></div></div>
+    <div class="grid">
+      <div class="card c7"><h2>Nasıl çalışmalı?</h2><ul class="tips">${(dt.ipucu || []).map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><button class="btn sm" type="button" data-tab="konular">Konulara geç</button><button class="btn ghost sm" type="button" data-tab="ozet">Özeti oku</button><button class="btn ghost sm" type="button" data-tab="sorular">Soru çöz</button></div></div>
+      <div class="card c5"><h2>Kaynaklar <small>Yeni sekmede açılır</small></h2><div class="links">${(dt.link || []).map(linkHtml).join("")}${dt.yt ? ytHtml(dt.yt) : ""}</div></div>
+    </div>
+    ${figs.length ? `<div class="card"><h2>Şekillerle</h2><div class="figs">${figs.map(figHtml).join("")}</div></div>` : ""}
+    ${dt.formul ? `<div class="card"><h2>Formüller <small>Sınavda basit hesap makinesi kullanılır</small></h2><div class="forms">${dt.formul.map(f => `<div class="form"><span>${esc(f[0])}</span><code>${esc(f[1])}</code></div>`).join("")}</div></div>` : ""}`; }
   if (modTab === "konular") body = `<div class="card"><h2>SPL resmî konu başlıkları <small>Çalıştıkça işaretle</small></h2><div class="topics">${m.alt.map(a => { const k = `${id}:${a.k}`, dep = (a.k.match(/\./g) || []).length; return `<button type="button" class="tp${dep >= 2 ? " sub" : ""}" data-k="${esc(k)}" aria-pressed="${!!S.konu[k]}"><span class="bx"></span><span class="k">${esc(a.k)}</span><span class="tt">${esc(a.t)}</span></button>`; }).join("")}</div></div>`;
   if (modTab === "ozet") body = `${c.uyari ? `<div class="warn">${esc(c.uyari)}</div>` : ""}<div class="notes">${(c.ozet || []).map(o => `<div class="note"><h3>${esc(o.b)}</h3><ul>${o.t.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>`).join("")}</div>`;
   if (modTab === "kartlar") body = `<div class="card">${(c.kartlar || []).length ? `<div class="tbl"><table><thead><tr><th>Ön yüz</th><th>Arka yüz</th><th>Kutu</th></tr></thead><tbody>${c.kartlar.map((k, i) => `<tr><td><b>${esc(k[0])}</b></td><td>${esc(k[1])}</td><td class="mono">${cardState(`${id}:${i}`).k}</td></tr>`).join("")}</tbody></table></div><div style="margin-top:14px"><a class="btn" href="#kartlar" data-only="${id}">Bu modülün kartlarını tekrar et</a></div>` : `<p class="empty">Bu modül için kart yok.</p>`}</div>`;
   if (modTab === "sorular") body = `<div class="card" id="pratik">${pratikBody(id)}</div>`;
-  return `<div class="mhead"><div><div class="crumb"><a href="#moduller">Modüller</a> / ${m.no}</div><h1>${esc(m.ad)}</h1><div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">${lic.map(x => `<span class="tag">${esc(x)}</span>`).join("")}</div></div>
-    <div style="min-width:220px;flex:0 1 280px"><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px"><span class="muted">Konular</span><b>%${p}</b></div>${bar(p)}</div></div>
+  return `<div class="hu" style="--h:${dt.h ?? 228};display:flex;flex-direction:column;gap:18px"><div class="crumb" style="margin:0"><a href="#moduller">Modüller</a> / Modül ${m.no}</div>
+    <section class="mban">${mIcon(id, "lg")}<div class="tx"><h1>${esc(m.ad)}</h1>${dt.giris ? `<p>${esc(dt.giris)}</p>` : ""}<div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">${lic.map(x => `<span class="tag">${esc(x)}</span>`).join("")}</div></div>
+    <div class="pg"><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px"><span class="muted">Konular</span><b>%${p}</b></div>${bar(p)}</div></section>
     <div class="tabs" role="tablist" id="mtabs">${tabs.map(([k, l]) => `<button type="button" role="tab" data-t="${k}" aria-selected="${modTab === k}">${l}</button>`).join("")}</div>
     ${body}
-    <p class="foot">Özetler, kartlar ve sorular çalışma amaçlı hazırlanmıştır; SPL'nin gerçek sınav sorularını içermez. Resmî kaynaklarla birlikte kullan.</p>`;
+    <p class="foot">Özetler, kartlar ve sorular çalışma amaçlı hazırlanmıştır; SPL'nin gerçek sınav sorularını içermez. Resmî kaynaklarla birlikte kullan.</p></div>`;
 }
 /* Modül içi pratik: tek tek soru, anında geri bildirim */
 let PR = null;
@@ -487,6 +646,7 @@ function vRehber() {
     <a class="nx" href="https://basvuru.spl.com.tr" target="_blank" rel="noopener"><span class="ic">3</span><div><b>SPL Başvuru Sistemi</b><span>Sınav başvurusu ve sonuçlar</span></div></a>
     <a class="nx" href="https://spk.gov.tr" target="_blank" rel="noopener"><span class="ic">4</span><div><b>SPK mevzuatı</b><span>Tebliğlerin güncel metinleri</span></div></a>
   </div></div>
+  <div class="card c6"><h2>Faydalı bağlantılar</h2><div class="links">${(window.SPL_GENEL_LINK || []).map(linkHtml).join("")}</div></div>
   <div class="card c6"><h2>Önerilen çalışma sırası</h2><ol style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px">
     <li><b>Temel:</b> Mevzuat, SP Araçları 1, Yatırım Kuruluşları, Takas (bunlar Düzey 1'in de modülleri).</li>
     <li><b>Piyasalar:</b> SP Araçları 2, Finansal Piyasalar, Ticaret Hukuku, Genel Ekonomi.</li>
@@ -513,13 +673,13 @@ function route() {
   if (h === "grup" && window.__grupOku) window.__grupOku();
 }
 let KT_ONLY = null, lastHash = "";
-addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h !== "kartlar") KT_ONLY = null; if (/^m\d\d$/.test(h) && h !== lastHash) { modTab = "konular"; } lastHash = h; route(); scrollTo(0, 0); });
+addEventListener("hashchange", () => { const h = location.hash.slice(1); if (h !== "kartlar") KT_ONLY = null; if (/^m\d\d$/.test(h) && h !== lastHash) { modTab = "genel"; } lastHash = h; route(); scrollTo(0, 0); });
 
 /* ---------- Olaylar ---------- */
 document.addEventListener("click", e => {
   const tp = e.target.closest(".tp");
   if (tp) { const k = tp.dataset.k; if (S.konu[k]) delete S.konu[k]; else S.konu[k] = today(); save(); const y = scrollY; route(); scrollTo(0, y); return; }
-  const mt = e.target.closest("#mtabs button"); if (mt) { modTab = mt.dataset.t; route(); return; }
+  const mt = e.target.closest("#mtabs button, [data-tab]"); if (mt) { modTab = mt.dataset.t || mt.dataset.tab; route(); if (mt.dataset.tab) document.getElementById("mtabs")?.scrollIntoView({ block: "start" }); return; }
   const only = e.target.closest("[data-only]"); if (only) { KT_ONLY = only.dataset.only; KT = null; }
   const a = e.target.closest("[data-act]"); if (!a) return;
   const act = a.dataset.act;
