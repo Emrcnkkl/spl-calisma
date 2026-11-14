@@ -34,6 +34,21 @@ SPL.ekle("m03", {
       "Depo sertifikaları (VII-128.4): yabancı ihraççının paylarını temsil eden, yerel piyasada işlem gören sertifikalar (ör. ADR mantığı). Yabancı sermaye piyasası araçları ve yabancı yatırım fonu payları da bu tebliğle düzenlenir.",
       "Projeye dayalı menkul kıymetler (III-61/B.1): bir projenin gelecekteki nakit akışlarına dayanarak proje finansman fonu tarafından ihraç edilir.",
       "Teminatlı ihraç (II-31/B.1): borçlanma araçlarının teminat yapısıyla ihracına ilişkin esaslar."
+    ]},
+    { b: "Gayrimenkul sertifikası, depo sertifikası, projeye dayalı menkul kıymetler", t: [
+      "Gayrimenkul sertifikası (VII-128.2): bir gayrimenkul projesindeki bağımsız bölümleri ya da proje hasılatını temsil eden menkul kıymet. Sahibi vadede bağımsız bölümü almayı ya da satış hasılatından pay almayı seçebilir.",
+      "Gayrimenkul sertifikasını, proje için yapı ruhsatı ve arsa üzerinde hakkı bulunan ihraççılar ihraç eder; konut almak için küçük tutarlarla birikim yapmayı sağlar.",
+      "Depo sertifikası (VII-128.4): yabancı bir ihraççının paylarını temsil eden ve yurt içinde işlem gören sertifika. Dayanak paylar saklayıcıda tutulur.",
+      "Yabancı yatırım fonu payları ve yabancı sermaye piyasası araçlarının Türkiye'de satışı SPK'nın iznine ve izahname benzeri belgelere tabidir.",
+      "Projeye dayalı menkul kıymetler (III-61/B.1): büyük altyapı, enerji gibi projelerin gelecekteki nakit akışlarına dayalı olarak proje finansmanı amacıyla ihraç edilir.",
+      "Teminatlı ihraç (II-31/B.1): borçlanma araçlarının ödenmesi, ihraççının ya da üçüncü kişinin varlıkları üzerinde kurulan teminatlarla güvence altına alınır; teminatlar yatırımcılar adına bir teminat yöneticisi tarafından izlenir."
+    ]},
+    { b: "Halka arzda roller ve fiyat", t: [
+      "Fiyat tespit raporu: halka arza aracılık eden kurumun, payların fiyatını hangi yöntemle belirlediğini açıkladığı rapor (ör. indirgenmiş nakit akımları, benzer şirket çarpanları).",
+      "Konsorsiyum: halka arzda birden çok aracı kurumun lider aracı kurumun yönetiminde birlikte çalışması.",
+      "Satış yöntemleri: talep toplama (sabit fiyat ya da fiyat aralığıyla) ve talep toplanmaksızın borsada satış.",
+      "Tahsisat grupları: yurt içi bireysel, yurt içi kurumsal, yurt dışı kurumsal yatırımcılar ve ihraççının çalışanları gibi gruplar için ayrılan pay oranları.",
+      "Satışla ilgili bilgilerin ve satış sonuçlarının KAP'ta açıklanması gerekir."
     ]}
   ],
   kartlar: [
@@ -48,7 +63,13 @@ SPL.ekle("m03", {
     ["Murabaha", "Alım-satıma dayalı kira sertifikası yapısı"],
     ["Gayrimenkul sertifikası", "Proje finansmanında bağımsız bölümleri veya satış bedellerini temsil eden sertifika"],
     ["Varantı kim ihraç eder?", "Banka veya aracı kurum (ihraççı); borsada piyasa yapıcıyla işlem görür."],
-    ["Depo sertifikası", "Yabancı ihraççının paylarını temsil eden, yerel piyasada işlem gören sertifika"]
+    ["Depo sertifikası", "Yabancı ihraççının paylarını temsil eden, yerel piyasada işlem gören sertifika"],
+    ["Projeye dayalı menkul kıymet", "Altyapı ve enerji gibi projelerin gelecekteki nakit akışlarına dayalı ihraç"],
+    ["Teminat yöneticisi", "Teminatlı borçlanma araçlarında teminatları yatırımcılar adına izleyen kişi"],
+    ["Fiyat tespit raporu", "Halka arz fiyatının hangi değerleme yöntemleriyle belirlendiğini açıklayan rapor"],
+    ["Yüklenimli aracılık", "Satılamayan payları aracı kurum satın almayı taahhüt eder"],
+    ["Teminatlı menkul kıymet (TMK)", "Teminat varlıkları ihraççının bilançosunda kalır; yatırımcının hem ihraççıya hem teminata başvuru hakkı vardır"],
+    ["Varantta çarpan (dönüşüm oranı)", "Bir varantın kaç birim dayanak varlığa karşılık geldiği"]
   ],
   sorular: [
     { s: "SPK tarafından onaylanan izahnamenin geçerlilik süresi ne kadardır?", c: ["3 ay", "6 ay", "12 ay", "24 ay"], d: 2, a: "İzahname onay tarihinden itibaren 12 ay geçerlidir." },
@@ -59,6 +80,22 @@ SPL.ekle("m03", {
     { s: "Bir konut projesinin bağımsız bölümlerini temsil eden ve proje finansmanı sağlayan araç hangisidir?", c: ["Gayrimenkul sertifikası", "İpoteğe dayalı menkul kıymet", "Varant", "Depo sertifikası"], d: 0, a: "Gayrimenkul sertifikası." },
     { s: "Varantlar için hangisi doğrudur?", c: ["Şirketlerin kendi paylarına dayalı olarak SPK tarafından ihraç edilir", "Banka veya aracı kurumlar tarafından ihraç edilir ve piyasa yapıcı vardır", "Tezgahüstünde işlem görür, borsada işlem görmez", "Sahibine yükümlülük getirir"], d: 1, a: "Varantları banka veya aracı kurumlar ihraç eder; Borsa İstanbul'da piyasa yapıcı ile işlem görür." },
     { s: "Halka arzda talep toplama yöntemine hangisi örnek değildir?", c: ["Sabit fiyatla talep toplama", "Fiyat aralığı ile talep toplama", "Borsada satış", "Değişken fiyatla talep toplama"], d: 2, a: "Borsada satış talep toplamadan ayrı bir satış yöntemidir." },
-    { s: "Konut kredisi alacaklarına dayanarak konut finansmanı fonları tarafından ihraç edilen menkul kıymet hangisidir?", c: ["VDMK", "İDMK", "Gayrimenkul sertifikası", "Projeye dayalı menkul kıymet"], d: 1, a: "İpoteğe dayalı menkul kıymet (İDMK)." }
+    { s: "Konut kredisi alacaklarına dayanarak konut finansmanı fonları tarafından ihraç edilen menkul kıymet hangisidir?", c: ["VDMK", "İDMK", "Gayrimenkul sertifikası", "Projeye dayalı menkul kıymet"], d: 1, a: "İpoteğe dayalı menkul kıymet (İDMK)." },
+    { s: "Bir konut projesindeki bağımsız bölümleri temsil eden ve sahibine vadede bölümü almayı ya da satış hasılatından pay almayı seçme imkânı veren araç hangisidir?", c: ["Kira sertifikası", "Gayrimenkul sertifikası", "Varlığa dayalı menkul kıymet", "Depo sertifikası"], d: 1, a: "Gayrimenkul sertifikası (VII-128.2)." },
+    { s: "Yabancı bir şirketin paylarını temsil eden ve Türkiye'de işlem gören sertifika hangisidir?", c: ["Depo sertifikası", "Varant", "Yatırım kuruluşu sertifikası", "Gayrimenkul sertifikası"], d: 0, a: "Depo sertifikası yabancı payları temsil eder; dayanak paylar saklayıcıda tutulur." },
+    { s: "Büyük altyapı ve enerji projelerinin gelecekteki nakit akışlarına dayanan menkul kıymetler hangi tebliğle düzenlenir?", c: ["II-5.1", "III-61/B.1", "VII-128.1", "III-48.1"], d: 1, a: "Projeye Dayalı Menkul Kıymetler Tebliği III-61/B.1." },
+    { s: "Teminatlı borçlanma aracı ihracında teminatları yatırımcılar adına izleyen kişi hangisidir?", c: ["Kurucu", "Teminat yöneticisi", "Piyasa yapıcı", "Portföy yöneticisi"], d: 1, a: "II-31/B.1 kapsamında teminatlar teminat yöneticisi tarafından izlenir." },
+    { s: "Halka arza aracılık eden kurumun pay fiyatını hangi yöntemlerle belirlediğini açıkladığı belge hangisidir?", c: ["Sirküler", "Fiyat tespit raporu", "Faaliyet raporu", "İhraç belgesi"], d: 1, a: "Fiyat tespit raporu değerleme yöntemlerini ve sonuçlarını açıklar." },
+    { s: "Halka arzda birden fazla aracı kurumun lider kurumun yönetiminde birlikte satış yapmasına ne denir?", c: ["Konsorsiyum", "Netleştirme", "Tahsisat", "Sendikasyon kredisi"], d: 0, a: "Konsorsiyum, aracı kurumların birlikte satış yapmasıdır." },
+    { s: "Halka arzda yatırımcı gruplarına (yurt içi bireysel, yurt içi kurumsal, yurt dışı kurumsal) ayrılan pay oranlarına ne denir?", c: ["Tahsisat", "Rüçhan", "Bakiye yüklenim", "İskonto"], d: 0, a: "Tahsisat grupları ve oranları izahnamede belirtilir." },
+    { s: "Teminatlı menkul kıymetleri varlığa dayalı menkul kıymetlerden ayıran temel özellik hangisidir?", c: ["Teminat varlıkları ihraççının bilançosunda kalır ve yatırımcının ihraççıya da başvuru hakkı vardır", "Faiz ödemezler", "Yalnızca Hazine ihraç eder", "Vadeleri bir yıldan kısadır"], d: 0, a: "TMK'da varlıklar bilançoda kalır (çifte başvuru); VDMK'da varlıklar fona devredilir." },
+    { s: "Bir varantın çarpanı 0,1 ise bir varant kaç birim dayanak varlığa karşılık gelir?", c: ["0,1", "1", "10", "100"], d: 0, a: "Çarpan, bir varantın karşılık geldiği dayanak miktarıdır: 0,1 birim." },
+    { s: "Varantların borsada işlem görmesinde sürekli alım ve satım kotasyonu vererek likidite sağlayan kuruluş hangisidir?", c: ["Takasbank", "Piyasa yapıcı", "MKK", "SPK"], d: 1, a: "Varantlarda ihraççı ya da belirlediği piyasa yapıcı likidite sağlar." },
+    { s: "Halka arz edilmeksizin, nitelikli yatırımcılara ya da tahsisli satış yoluyla yapılacak ihraçlarda hazırlanan belge hangisidir?", c: ["İzahname", "İhraç belgesi", "Fiyat tespit raporu", "Sirküler"], d: 1, a: "Halka arz edilmeyen satışlarda ihraç belgesi onaylanır." },
+    { s: "Kira sertifikalarında yatırımcıya yapılan ödemelerin kaynağı genellikle nedir?", c: ["Faiz geliri", "Dayanak varlıktan elde edilen kira ya da kâr", "Hazine garantisi", "Prim geliri"], d: 1, a: "Kira sertifikasında getiri dayanak varlığın kira veya kâr gelirinden doğar." },
+    { s: "Yatırım kuruluşu sertifikası için hangisi doğrudur?", c: ["Ortaklık hakkı verir", "Getirisi dayanak varlığın performansına bağlıdır ve yatırım kuruluşlarınca ihraç edilir", "Faizsiz finans aracıdır", "Yalnızca Hazine ihraç eder"], d: 1, a: "Yatırım kuruluşu sertifikalarını bankalar ve aracı kurumlar ihraç eder; getiri dayanağa bağlıdır." },
+    { s: "Varlık finansman fonu tarafından ihraç edilen menkul kıymet hangisidir?", c: ["Teminatlı menkul kıymet", "Varlığa dayalı menkul kıymet", "Paya dönüştürülebilir tahvil", "Gayrimenkul sertifikası"], d: 1, a: "VDMK'ları varlık finansman fonları ihraç eder." },
+    { s: "Halka arzda satış süresince ve sonrasında kamuya açıklanması gereken bilgiler nerede yayımlanır?", c: ["Resmî Gazete", "KAP", "Ticaret Sicili Gazetesi", "TCMB internet sitesi"], d: 1, a: "Satış bilgileri ve sonuçları KAP'ta açıklanır." },
+    { s: "Aracı kurumun halka arzda satılamayan payların tamamını kendisinin satın almayı taahhüt ettiği yöntem hangisidir?", c: ["En iyi gayret", "Yüklenimli aracılık", "Talep toplama", "Borsada satış"], d: 1, a: "Yüklenimli (firm commitment) aracılıkta kalan paylar aracı kurumca alınır." }
   ]
 });

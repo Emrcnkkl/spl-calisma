@@ -42,6 +42,20 @@ SPL.ekle("m08", {
       "Genel kanuni yedek akçe: yıllık kârın %5'i, ödenmiş sermayenin %20'sine ulaşıncaya kadar ayrılır.",
       "Kâr payı yalnızca net dönem kârından ve serbest yedek akçelerden dağıtılabilir.",
       "Yönetim kurulu üyeleri kusurlarıyla verdikleri zarardan şirkete, pay sahiplerine ve alacaklılara karşı sorumludur."
+    ]},
+    { b: "Karar nisapları (TTK md. 418 ve 421)", t: [
+      "Genel kural: genel kurul sermayenin en az dörtte birini karşılayan payların sahiplerinin varlığıyla toplanır; bu nisap toplantı süresince korunur. İlk toplantıda sağlanamazsa ikinci toplantıda nisap aranmaz. Kararlar mevcut oyların çoğunluğuyla alınır.",
+      "Esas sözleşme değişikliği: sermayenin en az yarısını temsil eden payların varlığı gerekir; ilk toplantıda sağlanamazsa ikinci toplantıda en az üçte biri yeterlidir.",
+      "Şirket merkezinin yurt dışına taşınması: sermayenin tamamını temsil eden payların oybirliği gerekir.",
+      "İşletme konusunun tamamen değiştirilmesi, imtiyazlı pay oluşturulması ve nama yazılı payların devrinin sınırlandırılması: sermayenin en az %75'ini oluşturan payların olumlu oyu gerekir.",
+      "Yönetim kurulu, üye tam sayısının çoğunluğuyla toplanır ve toplantıda bulunanların çoğunluğuyla karar alır (TTK md. 390)."
+    ]},
+    { b: "Şirket türleri ve yapısal değişiklikler", t: [
+      "Şahıs şirketleri: kollektif ve komandit şirket. Sermaye şirketleri: anonim, limited ve sermayesi paylara bölünmüş komandit şirket. Kooperatif ayrı bir türdür.",
+      "Kollektif şirkette ortaklar sınırsız ve müteselsil sorumludur. Komandit şirkette komandite ortak sınırsız, komanditer ortak koyduğu sermayeyle sınırlı sorumludur.",
+      "Limited şirkette ortak sayısı en fazla 50'dir. Anonim şirket tek pay sahibiyle kurulabilir.",
+      "Anonim ve limited şirketlerde asgari sermaye tutarları Cumhurbaşkanı kararıyla değiştirilebilir; güncel tutarları kontrol et.",
+      "Birleşme devralma ya da yeni kuruluş yoluyla olur. Bölünme tam ya da kısmi olabilir. Tür değiştirmede şirketin tüzel kişiliği devam eder."
     ]}
   ],
   kartlar: [
@@ -59,7 +73,14 @@ SPL.ekle("m08", {
     ["Genel kanuni yedek akçe", "Kârın %5'i, ödenmiş sermayenin %20'sine ulaşana kadar"],
     ["Rüçhan hakkı", "Mevcut ortakların yeni payları öncelikle alma hakkı"],
     ["Şirketin kendi paylarını iktisap sınırı", "Esas sermayenin %10'u"],
-    ["Oyda imtiyazda bir paya verilebilecek en fazla oy", "15 oy (kanundaki istisnalar hariç)"]
+    ["Oyda imtiyazda bir paya verilebilecek en fazla oy", "15 oy (kanundaki istisnalar hariç)"],
+    ["Merkezin yurt dışına taşınması", "Sermayenin tamamının oybirliği"],
+    ["İmtiyazlı pay oluşturma kararı", "Sermayenin en az %75'ini temsil eden payların olumlu oyu"],
+    ["Yönetim kurulu toplantı ve karar nisabı", "Üye tam sayısının çoğunluğuyla toplanır, bulunanların çoğunluğuyla karar alır"],
+    ["Komanditer ortak", "Sorumluluğu koyduğu sermayeyle sınırlı ortak"],
+    ["Limited şirkette ortak sayısı", "En fazla 50"],
+    ["İkinci tertip kanuni yedek akçe", "Pay sahiplerine %5 kâr payı ödendikten sonra dağıtılacak kârın %10'u"],
+    ["Tür değiştirme", "Şirketin tüzel kişiliği devam ederken başka bir şirket türüne geçmesi"]
   ],
   sorular: [
     { s: "Aşağıdakilerden hangisi şahıs şirketidir?", c: ["Anonim şirket", "Limited şirket", "Kollektif şirket", "Kooperatif"], d: 2, a: "Kollektif ve komandit şirketler şahıs şirketleridir." },
@@ -71,6 +92,23 @@ SPL.ekle("m08", {
     { s: "Genel kanuni yedek akçe nasıl ayrılır?", c: ["Kârın %10'u, sermayenin %50'sine ulaşana kadar", "Kârın %5'i, ödenmiş sermayenin %20'sine ulaşana kadar", "Kârın tamamı", "Sermayenin %5'i her yıl"], d: 1, a: "Yıllık kârın %5'i, ödenmiş sermayenin %20'sine ulaşıncaya kadar ayrılır." },
     { s: "Mevcut ortakların yeni çıkarılan payları sahip oldukları pay oranında öncelikle alma hakkına ne denir?", c: ["Bedelsiz pay hakkı", "Rüçhan hakkı", "Tasfiye payı hakkı", "Oyda imtiyaz"], d: 1, a: "Yeni pay alma (rüçhan) hakkı." },
     { s: "Kayıtlı sermaye sisteminde yönetim kurulunun sermaye artırımı yapabilmesi için hangisi gerekir?", c: ["Her artırım için genel kurul kararı", "Kayıtlı sermaye tavanı içinde kalınması", "Mahkeme izni", "Tüm ortakların oybirliği"], d: 1, a: "Kayıtlı sermaye tavanı içinde yönetim kurulu, genel kurul kararına gerek olmadan sermaye artırabilir." },
-    { s: "Anonim şirkette nakden taahhüt edilen payların en az ne kadarı tescilden önce ödenmelidir?", c: ["%10", "%25", "%50", "%100"], d: 1, a: "En az %25'i tescilden önce; kalanı 24 ay içinde ödenir." }
+    { s: "Anonim şirkette nakden taahhüt edilen payların en az ne kadarı tescilden önce ödenmelidir?", c: ["%10", "%25", "%50", "%100"], d: 1, a: "En az %25'i tescilden önce; kalanı 24 ay içinde ödenir." },
+    { s: "Anonim şirketin esas sözleşmesini değiştirecek genel kurul toplantısında ilk toplantı için aranan toplantı nisabı nedir?", c: ["Sermayenin en az dörtte biri", "Sermayenin en az yarısı", "Sermayenin en az %75'i", "Sermayenin tamamı"], d: 1, a: "TTK md. 421: esas sözleşme değişikliğinde sermayenin en az yarısı aranır; ikinci toplantıda üçte bir yeterlidir." },
+    { s: "Esas sözleşme değişikliği için yapılan ilk toplantıda nisap sağlanamazsa ikinci toplantıda aranan nisap nedir?", c: ["Nisap aranmaz", "Sermayenin en az üçte biri", "Sermayenin en az yarısı", "Sermayenin en az dörtte biri"], d: 1, a: "İkinci toplantıda sermayenin en az üçte biri yeterlidir." },
+    { s: "Şirket merkezinin yurt dışına taşınması kararı için hangisi gerekir?", c: ["Sermayenin yarısının oyu", "Sermayenin %75'inin oyu", "Sermayenin tamamını temsil eden payların oybirliği", "Yönetim kurulu kararı"], d: 2, a: "TTK md. 421/2: oybirliği gerekir." },
+    { s: "İmtiyazlı pay oluşturulması kararı için TTK'da öngörülen nisap hangisidir?", c: ["Sermayenin en az dörtte biri", "Sermayenin en az yarısı", "Sermayenin en az %75'ini temsil eden payların olumlu oyu", "Oybirliği"], d: 2, a: "İşletme konusunun tamamen değişmesi, imtiyazlı pay oluşturulması ve nama yazılı payların devrinin sınırlanması %75 ister." },
+    { s: "Anonim şirket yönetim kurulunun karar nisabı nedir?", c: ["Üyelerin tamamı", "Toplantıda bulunanların çoğunluğu", "Üyelerin üçte ikisi", "Başkanın tek başına kararı"], d: 1, a: "Yönetim kurulu üye tam sayısının çoğunluğuyla toplanır, bulunanların çoğunluğuyla karar alır." },
+    { s: "Olağan genel kurul ne zaman toplanır?", c: ["Her ay", "Faaliyet dönemi sonundan itibaren üç ay içinde", "Faaliyet dönemi sonundan itibaren bir yıl içinde", "Yalnızca gerektiğinde"], d: 1, a: "Olağan genel kurul yılda bir, dönem sonundan itibaren üç ay içinde toplanır." },
+    { s: "Komandit şirkette sorumluluğu koyduğu sermayeyle sınırlı olan ortak hangisidir?", c: ["Komandite", "Komanditer", "Kollektif ortak", "Murahhas üye"], d: 1, a: "Komanditer ortak sınırlı, komandite ortak sınırsız sorumludur." },
+    { s: "Limited şirkette ortak sayısı en fazla kaç olabilir?", c: ["20", "50", "100", "Sınır yoktur"], d: 1, a: "TTK'ya göre limited şirkette ortak sayısı en fazla 50'dir." },
+    { s: "Anonim şirket en az kaç pay sahibiyle kurulabilir?", c: ["1", "2", "3", "5"], d: 0, a: "TTK tek pay sahipli anonim şirkete izin verir." },
+    { s: "İkinci tertip genel kanuni yedek akçe nasıl ayrılır?", c: ["Yıllık kârın %5'i", "Pay sahiplerine %5 kâr payı ödendikten sonra dağıtılacak kârın %10'u", "Sermayenin %20'si", "Kârın tamamı"], d: 1, a: "TTK md. 519/2-c'ye göre ayrılır." },
+    { s: "Aşağıdakilerden hangisi sermaye şirketidir?", c: ["Kollektif şirket", "Adi komandit şirket", "Limited şirket", "Adi ortaklık"], d: 2, a: "Anonim, limited ve sermayesi paylara bölünmüş komandit şirket sermaye şirketidir." },
+    { s: "Bir şirketin başka bir şirketi bütün aktif ve pasifleriyle devralması ve devrolunan şirketin sona ermesi hangi işlemdir?", c: ["Tür değiştirme", "Devralma yoluyla birleşme", "Kısmi bölünme", "Sermaye azaltımı"], d: 1, a: "Devralma yoluyla birleşmede devrolunan şirket sona erer." },
+    { s: "Tür değiştirme ile ilgili hangisi doğrudur?", c: ["Şirket tasfiye edilir", "Şirketin tüzel kişiliği devam eder", "Yeni bir şirket kurulur, eski şirket sona erer", "Yalnızca şahıs şirketleri tür değiştirebilir"], d: 1, a: "Tür değiştirmede tüzel kişilik korunur." },
+    { s: "Kâr payı aşağıdaki kaynaklardan hangisinden dağıtılabilir?", c: ["Ödenmiş sermayeden", "Net dönem kârından ve serbest yedek akçelerden", "Banka kredisinden", "Kanuni yedek akçenin tamamından"], d: 1, a: "Kâr payı yalnızca net dönem kârı ve bu amaçla ayrılmış yedek akçelerden ödenir." },
+    { s: "Pay sahibinin, belirli olayların incelenmesi için genel kuruldan istemde bulunabileceği hak hangisidir?", c: ["Ayrılma hakkı", "Özel denetim isteme hakkı", "Rüçhan hakkı", "Tasfiye payı hakkı"], d: 1, a: "Özel denetim isteme hakkı, bilgi alma hakkının devamı niteliğindedir." },
+    { s: "Kollektif şirkette ortakların şirket borçlarından sorumluluğu nasıldır?", c: ["Koydukları sermayeyle sınırlı", "Sınırsız ve müteselsil", "Hiç sorumlu değiller", "Yalnızca yöneticiler sorumlu"], d: 1, a: "Kollektif şirket ortakları sınırsız ve müteselsil sorumludur." },
+    { s: "Sermaye azaltımında alacaklıların korunması için hangisi yapılır?", c: ["Alacaklılara ilanla çağrı yapılır ve haklarını bildirmeleri istenir", "Alacaklılara bilgi verilmez", "Alacaklar otomatik silinir", "Yalnızca bankalar bilgilendirilir"], d: 0, a: "Sermaye azaltımında alacaklılara ilanla çağrı yapılır; alacakları ödenir ya da teminat altına alınır." }
   ]
 });

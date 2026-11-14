@@ -36,6 +36,27 @@ SPL.ekle("m02", {
       "İhraç yöntemleri: ihale (rekabetçi ve rekabetçi olmayan teklifler), doğrudan satış, halka arz.",
       "Eurobond: Hazinenin yurt dışında yabancı para cinsinden ihraç ettiği tahviller.",
       "Hazine ihalelerinde birincil piyasa yapıcı bankalar aktif rol oynar."
+    ]},
+    { b: "Pay fiyatının düzeltilmesi ve haklar", t: [
+      "Bedelsiz sermaye artırımında teorik fiyat = eski fiyat / (1 + bedelsiz oranı). Yatırımcının toplam serveti değişmez.",
+      "Bedelli sermaye artırımında teorik fiyat = (eski fiyat + bedelli oranı × pay başına ödenecek tutar) / (1 + bedelli oranı).",
+      "Kâr payı dağıtımında fiyat, hak kullanım günü pay başına brüt kâr payı kadar düzeltilir.",
+      "Rüçhan (yeni pay alma) hakkı kullandırılırken haklar ayrıca borsada işlem görebilir; kullanılmayan haklar ihraççı tarafından satılabilir.",
+      "İmtiyaz türleri: oy hakkında, kâr payında, tasfiye payında, yönetim kuruluna aday göstermede imtiyaz."
+    ]},
+    { b: "Borçlanma araçlarının türleri", t: [
+      "Tahvil: vadesi bir yıldan uzun borçlanma aracı. Finansman bonosu: bir yıldan kısa vadeli borçlanma aracı.",
+      "Paya dönüştürülebilir tahvil: sahibine ihraççının kendi paylarına dönüşme hakkı verir. Değiştirilebilir tahvil: ihraççının portföyündeki başka bir şirketin payıyla değiştirme hakkı verir.",
+      "Kuponsuz (iskontolu) tahvil nominal değerinin altında satılır, vadede nominal değer ödenir. Değişken faizli tahvilin kuponu bir göstergeye (ör. TLREF) bağlıdır.",
+      "Borçlanma Aracı Sahipleri Kurulu (II-31/A.1): aynı ihraçtaki borçlanma aracı sahiplerinin ortak menfaatleri için karar aldığı kurul; ödeme koşullarının değiştirilmesi gibi konuları görüşür.",
+      "İpotek, rehin ya da garanti ile teminatlandırılmış borçlanma araçları, teminatsızlara göre daha düşük kredi riski taşır."
+    ]},
+    { b: "Fon türleri ve kamu borçlanma araçları", t: [
+      "Fon türleri: para piyasası, borçlanma araçları, hisse senedi (yoğun), değişken, karma, katılım, fon sepeti, endeks, kıymetli madenler ve nitelikli yatırımcılara yönelik serbest fonlar.",
+      "Fon toplam değeri = portföy değeri + alacaklar − borçlar. Pay fiyatı = fon toplam değeri / dolaşımdaki pay sayısı.",
+      "Devlet iç borçlanma senetleri: Hazine bonosu (vadesi bir yıla kadar), devlet tahvili (bir yıldan uzun), TÜFE'ye endeksli tahvil, altına dayalı senetler, kira sertifikaları.",
+      "Eurobond: Hazine'nin yurt dışında yabancı para cinsinden ihraç ettiği tahvil.",
+      "Hazine ihaleleri çok fiyatlı (her kazanan kendi teklif fiyatından alır) ya da tek fiyatlı yapılabilir; TCMB Hazine'nin mali ajanıdır."
     ]}
   ],
   kartlar: [
@@ -50,7 +71,15 @@ SPL.ekle("m02", {
     ["Borçlanma Aracı Sahipleri Kurulu", "Borçlanma aracı sahiplerinin ortak menfaatini korumak için toplanan kurul (II-31/A.1)"],
     ["Türkiye'de borsa türevleri nerede işlem görür?", "Borsa İstanbul Vadeli İşlem ve Opsiyon Piyasası (VİOP)"],
     ["Opsiyonda hak ve yükümlülük", "Hak alıcıda, yükümlülük satıcıda; alıcı prim öder."],
-    ["Sermaye benzeri borçlanma aracı", "Ödeme sırası diğer borçlardan sonra gelen, sermayeye katkı sağlayan araç"]
+    ["Sermaye benzeri borçlanma aracı", "Ödeme sırası diğer borçlardan sonra gelen, sermayeye katkı sağlayan araç"],
+    ["Bedelsiz sonrası teorik fiyat", "Eski fiyat / (1 + bedelsiz oranı)"],
+    ["Bedelli sonrası teorik fiyat", "(Eski fiyat + oran × ödenecek tutar) / (1 + oran)"],
+    ["Finansman bonosu", "Bir yıldan kısa vadeli borçlanma aracı"],
+    ["Fon toplam değeri", "Portföy değeri + alacaklar − borçlar"],
+    ["Eurobond", "Hazine'nin yurt dışında döviz cinsinden ihraç ettiği tahvil"],
+    ["Çok fiyatlı ihale", "Her kazanan teklif sahibi kendi verdiği fiyattan alır"],
+    ["TÜFE'ye endeksli tahvil", "Anaparası enflasyona göre artan, reel getiri sunan devlet tahvili"],
+    ["Serbest fon", "Yalnızca nitelikli yatırımcılara satılabilen, yatırım sınırlamaları gevşek fon"]
   ],
   sorular: [
     { s: "Bedelsiz sermaye artırımı için hangisi doğrudur?", c: ["Şirkete yeni nakit girer", "İç kaynaklar sermayeye eklenir, şirket değeri değişmez", "Ortakların payları azalır", "Yalnızca yeni yatırımcılara pay verilir"], d: 1, a: "Bedelsiz artırımda yedekler/kâr sermayeye eklenir; şirkete para girmez, toplam değer değişmez." },
@@ -62,6 +91,21 @@ SPL.ekle("m02", {
     { s: "Hazine bonosunun vadesi en fazla ne kadardır?", c: ["3 ay", "6 ay", "1 yıl", "2 yıl"], d: 2, a: "Hazine bonosu 1 yıla kadar, devlet tahvili 1 yıldan uzun vadelidir." },
     { s: "Opsiyon sözleşmesinde prim ödeyen taraf hangisidir?", c: ["Opsiyon satıcısı", "Opsiyon alıcısı", "Takas kurumu", "Borsa"], d: 1, a: "Hakkı satın alan opsiyon alıcısı prim öder." },
     { s: "Yatırım fonuyla ilgili hangisi yanlıştır?", c: ["Riskin dağıtılması ilkesine göre yönetilir", "Tüzel kişiliği vardır", "Varlıkları saklayıcıda tutulur", "İçtüzüğü bulunur"], d: 1, a: "Yatırım fonlarının tüzel kişiliği yoktur." },
-    { s: "Türkiye'de devlet iç borçlanma senetlerini ihraç eden kurum hangisidir?", c: ["TCMB", "SPK", "Hazine ve Maliye Bakanlığı", "Borsa İstanbul"], d: 2, a: "DİBS'leri Hazine ve Maliye Bakanlığı ihraç eder; TCMB ihalelerde aracılık yapar." }
+    { s: "Türkiye'de devlet iç borçlanma senetlerini ihraç eden kurum hangisidir?", c: ["TCMB", "SPK", "Hazine ve Maliye Bakanlığı", "Borsa İstanbul"], d: 2, a: "DİBS'leri Hazine ve Maliye Bakanlığı ihraç eder; TCMB ihalelerde aracılık yapar." },
+    { s: "Pay fiyatı 10 TL olan bir şirket, 1 TL nominal değerli paylarla %50 bedelli sermaye artırımı yapıyor. Teorik fiyat kaç TL olur?", c: ["5", "6", "7", "9,5"], d: 2, a: "(10 + 0,5 × 1) / 1,5 = 7 TL." },
+    { s: "Pay fiyatı 30 TL olan şirket %50 bedelsiz sermaye artırımı yaparsa teorik fiyat kaç TL olur?", c: ["15", "20", "25", "45"], d: 1, a: "30 / 1,5 = 20 TL." },
+    { s: "Pay fiyatı 50 TL olan şirket pay başına 2 TL brüt kâr payı dağıtıyor. Hak kullanım günü düzeltilmiş fiyat kaç TL olur?", c: ["46", "48", "50", "52"], d: 1, a: "Fiyat kâr payı kadar düzeltilir: 50 − 2 = 48 TL." },
+    { s: "Sahibine ihraççı şirketin kendi paylarına dönüşme hakkı veren borçlanma aracı hangisidir?", c: ["Değiştirilebilir tahvil", "Paya dönüştürülebilir tahvil", "Kuponsuz tahvil", "Finansman bonosu"], d: 1, a: "Paya dönüştürülebilir tahvil ihraççının kendi paylarına dönüşür; değiştirilebilir tahvil başka şirketin payıyla değişir." },
+    { s: "Vadesi bir yıldan kısa olan özel sektör borçlanma aracı hangisidir?", c: ["Tahvil", "Finansman bonosu", "Eurobond", "Devlet tahvili"], d: 1, a: "Finansman bonosu bir yıldan kısa vadelidir." },
+    { s: "Aynı ihraçtaki borçlanma aracı sahiplerinin ödeme koşullarındaki değişiklik gibi ortak konularda karar aldığı yapı hangisidir?", c: ["Genel kurul", "Borçlanma Aracı Sahipleri Kurulu", "Yatırımcı Tazmin Merkezi", "Denetim komitesi"], d: 1, a: "II-31/A.1 Tebliği ile düzenlenen Borçlanma Aracı Sahipleri Kurulu." },
+    { s: "Kuponu belirli bir gösterge faize (ör. TLREF) bağlı olarak her dönem yeniden belirlenen tahvil hangisidir?", c: ["Sabit faizli tahvil", "Değişken faizli tahvil", "Kuponsuz tahvil", "Hazine bonosu"], d: 1, a: "Değişken faizli tahvilin kuponu gösterge faize göre değişir." },
+    { s: "Bir fonun portföy değeri 50 milyon TL, alacakları 2 milyon TL, borçları 1 milyon TL'dir. Fon toplam değeri kaç milyon TL'dir?", c: ["49", "50", "51", "53"], d: 2, a: "50 + 2 − 1 = 51 milyon TL." },
+    { s: "Anaparası enflasyona göre güncellenen ve yatırımcıya reel getiri sağlayan devlet borçlanma aracı hangisidir?", c: ["Hazine bonosu", "TÜFE'ye endeksli devlet tahvili", "Eurobond", "Kuponsuz devlet tahvili"], d: 1, a: "TÜFE'ye endeksli tahvillerde anapara enflasyonla artar." },
+    { s: "Hazine'nin yurt dışında yabancı para cinsinden ihraç ettiği borçlanma aracı hangisidir?", c: ["Eurobond", "Hazine bonosu", "Gelire endeksli senet", "Kira sertifikası"], d: 0, a: "Eurobond yurt dışında döviz cinsinden ihraç edilir." },
+    { s: "Çok fiyatlı Hazine ihalesinde kazanan yatırımcılar hangi fiyattan alım yapar?", c: ["Tek bir ortalama fiyattan", "Kendi teklif ettikleri fiyattan", "En düşük kabul edilen fiyattan", "Nominal değerden"], d: 1, a: "Çok fiyatlı ihalede her kazanan kendi teklif fiyatıyla alır." },
+    { s: "Yalnızca nitelikli yatırımcılara satılabilen ve yatırım sınırlamaları daha esnek olan fon türü hangisidir?", c: ["Para piyasası fonu", "Serbest fon", "Borçlanma araçları fonu", "Endeks fonu"], d: 1, a: "Serbest fonlar nitelikli yatırımcılara yöneliktir." },
+    { s: "Aşağıdakilerden hangisi pay sahibine tanınabilecek imtiyaz türlerinden biri değildir?", c: ["Oy hakkında imtiyaz", "Kâr payında imtiyaz", "Yönetim kuruluna aday göstermede imtiyaz", "Vergiden muafiyet imtiyazı"], d: 3, a: "İmtiyazlar oy, kâr payı, tasfiye payı ve aday gösterme gibi ortaklık haklarına ilişkindir; vergi muafiyeti imtiyaz değildir." },
+    { s: "Hazine bonosu ile devlet tahvilini ayıran temel ölçüt hangisidir?", c: ["İhraç eden kurum", "Vade (bir yıla kadar bono, daha uzun tahvil)", "Para birimi", "Faiz türü"], d: 1, a: "İkisini de Hazine ihraç eder; bono bir yıla kadar, tahvil bir yıldan uzun vadelidir." },
+    { s: "Vadede dayanak varlığı önceden belirlenen fiyattan alma ya da satma yükümlülüğü getiren, borsada işlem gören standart sözleşme hangisidir?", c: ["Forward", "Vadeli işlem (futures) sözleşmesi", "Swap", "Varant"], d: 1, a: "Futures standarttır ve borsada işlem görür; forward tezgahüstüdür." }
   ]
 });

@@ -44,6 +44,28 @@ SPL.ekle("m01", {
       "Müşteri bilgilerinin gizliliği yasal zorunluluklar dışında korunur; müşteri aleyhine işlem yapılamaz (front running yasak).",
       "Çalışanlar mesleki yeterliliklerini korumak, lisanslarını güncel tutmak ve kişisel işlemlerinde kurallara uymak zorundadır.",
       "Reklam ve tanıtımlarda yanıltıcı bilgi verilmez; geçmiş performans gelecek için garanti olarak sunulamaz."
+    ]},
+    { b: "Halka açık ortaklıklar: önemli işlemler, pay alım teklifi, geri alım", t: [
+      "Önemli nitelikteki işlemler (birleşme, bölünme, tür değiştirme, mal varlığının tamamının ya da önemli bir kısmının devri, faaliyet konusunun tamamen değiştirilmesi, imtiyaz oluşturulması…) genel kurul onayına sunulur (SPKn md. 23).",
+      "Bu işlemlere katılıp genel kurulda olumsuz oy kullanan ve muhalefet şerhini tutanağa geçirten pay sahipleri, paylarını ortaklığa satarak ayrılma hakkına sahiptir (SPKn md. 24).",
+      "Pay alım teklifi zorunluluğu (II-26.1): bir halka açık ortaklığın yönetim kontrolünü kazanan kişi, diğer pay sahiplerine paylarını satın almayı teklif etmek zorundadır. Yönetim kontrolü: oy haklarının %50'sinden fazlasına sahip olmak ya da yönetim kurulu üyelerinin çoğunluğunu seçme imtiyazı.",
+      "Geri alınan paylar (II-22.1): ortaklık kendi paylarını geri alabilir; geri alınan payların toplam nominal değeri çıkarılmış sermayenin %10'unu aşamaz. Bu paylar kâr payı ve oy hakkı vermez.",
+      "Ortaklıkların bedelsiz pay ve kâr payı dağıtımı, ilişkili taraf işlemleri ve finansal raporları SPK düzenlemelerine ve KAP'ta kamuya açıklamaya tabidir."
+    ]},
+    { b: "Pay sahipliği bildirimleri ve içsel bilgi", t: [
+      "Bir halka açık ortaklığın sermayesinde ya da oy haklarında doğrudan veya dolaylı payı %5, %10, %15, %20, %25, %33, %50, %67 ve %95 eşiklerine ulaşan, bunları aşan ya da bunların altına düşen kişiler kamuya açıklama yapar (II-15.1).",
+      "İçsel bilgi: ihraççının sermaye piyasası araçlarının değerini ya da yatırımcıların kararlarını etkileyebilecek, henüz kamuya açıklanmamış bilgi. Gecikmeksizin KAP'ta açıklanır.",
+      "Açıklama ertelenebilir: meşru çıkarların korunması gerekiyorsa, erteleme yatırımcıları yanıltmıyorsa ve bilginin gizliliği sağlanabiliyorsa. Gizlilik bozulursa hemen açıklanır.",
+      "Yönetim sorumluluğu bulunan kişiler ve bunlarla yakın ilişkili kişiler ortaklık payları üzerindeki işlemlerini kamuya açıklar.",
+      "İçeriden öğrenenler listesi: içsel bilgiye erişimi olan kişilerin listesi ihraççı tarafından tutulur."
+    ]},
+    { b: "Ortaklıklar ve fonlar: GYO, MKYO, BYF, GYF, GSYF, GSYO", t: [
+      "Gayrimenkul yatırım ortaklığı (GYO, III-48.1): kayıtlı sermayeli anonim şirket; aktif toplamının en az %51'i gayrimenkul, gayrimenkul projeleri ve gayrimenkule dayalı haklardan oluşur.",
+      "Menkul kıymet yatırım ortaklığı (MKYO, III-48.5): sermaye piyasası araçlarından oluşan portföyü işleten, payları halka arz edilen anonim şirket.",
+      "Borsa yatırım fonu (BYF, III-52.2): katılma payları borsada işlem gören, çoğunlukla bir endeksi izleyen fon. Pay oluşturma ve geri alma yetkili katılımcılar aracılığıyla, çoğunlukla dayanak sepet karşılığında yapılır.",
+      "Gayrimenkul yatırım fonu (III-52.3) ve girişim sermayesi yatırım fonu (III-52.4): katılma payları yalnızca nitelikli yatırımcılara satılabilir; portföy yönetim şirketleri kurar.",
+      "Girişim sermayesi yatırım ortaklığı (GSYO, III-48.3): girişim şirketlerine uzun vadeli fon sağlamak amacıyla kurulan anonim şirket.",
+      "Para piyasası fonu: vadesi 184 günü aşmayan likit araçlara yatırım yapar; portföyün ağırlıklı ortalama vadesi en fazla 45 gündür."
     ]}
   ],
   kartlar: [
@@ -61,7 +83,18 @@ SPL.ekle("m01", {
     ["Yatırım ortaklıklarının hukuki şekli", "Anonim ortaklık (kayıtlı sermayeli)"],
     ["TSPB", "Türkiye Sermaye Piyasaları Birliği; aracı kurum ve PYŞ'lerin zorunlu üye olduğu meslek kuruluşu"],
     ["Yatırımcı Tazmin Merkezi", "Yatırım kuruluşlarının ödeme güçlüğünde yatırımcı alacaklarını kanuni tutara kadar karşılar."],
-    ["KAP", "Kamuyu Aydınlatma Platformu"]
+    ["KAP", "Kamuyu Aydınlatma Platformu"],
+    ["Ayrılma hakkı (SPKn md. 24)", "Önemli nitelikteki işleme genel kurulda olumsuz oy verip muhalefet şerhi koyan pay sahibinin paylarını ortaklığa satma hakkı"],
+    ["Yönetim kontrolü (pay alım teklifi)", "Oy haklarının %50'sinden fazlası ya da yönetim kurulu üyelerinin çoğunluğunu seçme imtiyazı"],
+    ["Geri alınan payların üst sınırı", "Çıkarılmış sermayenin %10'u"],
+    ["Pay sahipliği bildirim eşikleri", "%5, %10, %15, %20, %25, %33, %50, %67, %95"],
+    ["İçsel bilginin açıklanması ne zaman ertelenebilir?", "Meşru çıkar varsa, yatırımcı yanıltılmıyorsa ve gizlilik sağlanabiliyorsa"],
+    ["GYO portföy sınırı", "Aktif toplamının en az %51'i gayrimenkul, gayrimenkul projesi ve gayrimenkule dayalı haklar"],
+    ["BYF'de pay oluşturma", "Yetkili katılımcılar aracılığıyla, dayanak sepet karşılığında"],
+    ["Para piyasası fonu", "Vadesi en fazla 184 gün olan araçlar; ağırlıklı ortalama vade en fazla 45 gün"],
+    ["Front running (önden işlem)", "Müşteri emrini öğrenip ondan önce kendi hesabına işlem yapmak; etik ve mevzuata aykırı"],
+    ["Churning", "Komisyon için müşteri hesabında gereksiz sıklıkta işlem yapmak"],
+    ["SPK karar organı", "Yedi üyeden oluşan Kurul Karar Organı"]
   ],
   sorular: [
     { s: "6362 sayılı SPKn'ye göre pay sahibi sayısı kaçı aşan anonim ortaklıkların payları halka arz edilmiş sayılır?", c: ["250", "500", "1.000", "5.000"], d: 1, a: "Pay sahibi sayısı 500'ü aşan ortaklıklar halka arz edilmiş sayılır ve halka açık ortaklık hükümlerine tabidir." },
@@ -74,6 +107,20 @@ SPL.ekle("m01", {
     { s: "Aşağıdakilerden hangisi kurumsal yönetim ilkelerinden biri değildir?", c: ["Eşitlik", "Şeffaflık", "Hesap verebilirlik", "Kârlılık"], d: 3, a: "Kurumsal yönetimin dört ilkesi eşitlik, şeffaflık, hesap verebilirlik ve sorumluluktur." },
     { s: "Hisse senedi yoğun fon unvanını kullanabilmek için portföyün en az ne kadarı BIST'te işlem gören paylardan oluşmalıdır?", c: ["%51", "%60", "%80", "%100"], d: 2, a: "Portföyün en az %80'i." },
     { s: "Gayrimenkul yatırım ortaklıklarının hukuki yapısı hangisidir?", c: ["Tüzel kişiliği olmayan fon", "Anonim ortaklık", "Limited şirket", "Kooperatif"], d: 1, a: "Yatırım ortaklıkları kayıtlı sermayeli anonim ortaklık şeklinde kurulur." },
-    { s: "Aracı kurum çalışanının, müşterisinin büyük emrini öğrenip önce kendi hesabına işlem yapması hangi kurala aykırıdır?", c: ["Sır saklama ve müşteri menfaatini önceleme", "Lisans yenileme", "Reklam kuralları", "Kayıtlı sermaye sistemi"], d: 0, a: "Front running; müşteri menfaatini önceleme ve bilgiyi kendi çıkarına kullanmama kurallarına aykırıdır." }
+    { s: "Aracı kurum çalışanının, müşterisinin büyük emrini öğrenip önce kendi hesabına işlem yapması hangi kurala aykırıdır?", c: ["Sır saklama ve müşteri menfaatini önceleme", "Lisans yenileme", "Reklam kuralları", "Kayıtlı sermaye sistemi"], d: 0, a: "Front running; müşteri menfaatini önceleme ve bilgiyi kendi çıkarına kullanmama kurallarına aykırıdır." },
+    { s: "Birleşme işlemine katılıp genel kurulda olumsuz oy kullanan ve muhalefet şerhini tutanağa geçirten pay sahibinin SPKn'ye göre hangi hakkı vardır?", c: ["Rüçhan hakkı", "Ayrılma hakkı", "İptal davası açma zorunluluğu", "Özel denetim hakkı"], d: 1, a: "SPKn md. 24: önemli nitelikteki işlemlerde olumsuz oy verip şerh koyan pay sahibi paylarını ortaklığa satarak ayrılabilir." },
+    { s: "Halka açık bir ortaklığın oy haklarının %50'sinden fazlasını edinen kişinin genel kural olarak yükümlülüğü nedir?", c: ["Payları borsadan çıkarmak", "Diğer pay sahiplerine pay alım teklifinde bulunmak", "Sermaye artırımı yapmak", "Yönetim kurulunu değiştirmek"], d: 1, a: "Yönetim kontrolünü kazanan kişi pay alım teklifi yapmak zorundadır (II-26.1)." },
+    { s: "Halka açık ortaklığın geri aldığı payların toplam nominal değeri çıkarılmış sermayenin en fazla yüzde kaçı olabilir?", c: ["%5", "%10", "%20", "%25"], d: 1, a: "Geri alınan payların nominal değeri çıkarılmış sermayenin %10'unu aşamaz." },
+    { s: "Aşağıdakilerden hangisi pay sahipliği bildirim eşiklerinden biri değildir?", c: ["%5", "%33", "%40", "%67"], d: 2, a: "Eşikler %5, %10, %15, %20, %25, %33, %50, %67 ve %95'tir; %40 eşik değildir." },
+    { s: "İçsel bilginin kamuya açıklanmasının ertelenebilmesi için aşağıdakilerden hangisi gerekli değildir?", c: ["Meşru çıkarların korunması", "Ertelemenin yatırımcıları yanıltmaması", "Bilginin gizliliğinin sağlanabilmesi", "SPK'dan önceden yazılı izin alınması"], d: 3, a: "Erteleme ihraççının kararıdır; şartlar meşru çıkar, yanıltmama ve gizliliktir." },
+    { s: "Gayrimenkul yatırım ortaklıklarının aktif toplamının en az ne kadarı gayrimenkul, gayrimenkul projesi ve gayrimenkule dayalı haklardan oluşmalıdır?", c: ["%25", "%51", "%75", "%90"], d: 1, a: "GYO'larda bu oran en az %51'dir." },
+    { s: "Borsa yatırım fonlarında katılma payı oluşturma ve geri alma işlemleri genellikle kimin aracılığıyla yapılır?", c: ["Takasbank", "Yetkili katılımcılar", "Bireysel yatırımcılar", "Borsa İstanbul"], d: 1, a: "BYF'de yeni pay oluşturma ve geri alma yetkili katılımcılar aracılığıyla yapılır." },
+    { s: "Girişim sermayesi yatırım fonlarının katılma payları kimlere satılabilir?", c: ["Tüm yatırımcılara", "Yalnızca nitelikli yatırımcılara", "Yalnızca emeklilik fonlarına", "Yalnızca yabancı yatırımcılara"], d: 1, a: "GSYF ve gayrimenkul yatırım fonu payları yalnızca nitelikli yatırımcılara satılabilir." },
+    { s: "Para piyasası fonlarında portföyün ağırlıklı ortalama vadesi en fazla kaç gün olabilir?", c: ["30", "45", "90", "184"], d: 1, a: "Ağırlıklı ortalama vade en fazla 45 gün; tek tek araçların vadesi en fazla 184 gündür." },
+    { s: "Bir aracı kurum çalışanının, yalnızca daha fazla komisyon elde etmek için müşteri hesabında gereksiz sıklıkta işlem yapmasına ne denir?", c: ["Arbitraj", "Churning", "Hedging", "Netleştirme"], d: 1, a: "Churning, müşteri çıkarına aykırı aşırı işlem yapmaktır ve etik ilkelere aykırıdır." },
+    { s: "Sermaye Piyasası Kurulu karar organı kaç üyeden oluşur?", c: ["5", "7", "9", "11"], d: 1, a: "SPKn'ye göre Kurul karar organı yedi üyeden oluşur." },
+    { s: "Yönetim sorumluluğu bulunan bir kişinin ortaklık payları üzerindeki işlemi için hangisi doğrudur?", c: ["Açıklama gerekmez", "Kamuya açıklanır", "Yalnızca yıllık raporda yazılır", "Yalnızca SPK'ya gizli bildirilir"], d: 1, a: "Yönetim sorumluluğu bulunan kişiler ve yakınlarının işlemleri kamuya açıklanır." },
+    { s: "Sermaye piyasası çalışanı için aşağıdaki davranışlardan hangisi etik ilkelere uygundur?", c: ["Müşteri bilgilerini arkadaşlarıyla paylaşmak", "Çıkar çatışmasını müşteriye açıklamak ve müşteri yararını önde tutmak", "Kesin getiri vaat etmek", "Müşteri emrinden önce kendi hesabına işlem yapmak"], d: 1, a: "Çıkar çatışmalarını açıklamak ve müşteri yararını gözetmek temel etik ilkelerdir." },
+    { s: "Yatırım fonları hakkında hangisi doğrudur?", c: ["Tüzel kişiliği olan anonim şirketlerdir", "İçtüzükle kurulan, tüzel kişiliği olmayan mal varlıklarıdır", "Yalnızca bankalar kurabilir", "Payları borsada işlem görmek zorundadır"], d: 1, a: "Yatırım fonları içtüzükle kurulan, tüzel kişiliği olmayan mal varlıklarıdır; kurucusu portföy yönetim şirketidir." }
   ]
 });

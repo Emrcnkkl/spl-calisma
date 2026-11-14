@@ -53,6 +53,27 @@ SPL.ekle("m11", {
       "Jensen alfası = Rp − [Rf + βp(Rm − Rf)]: CAPM'in beklediğinin üstündeki getiri. Pozitif alfa üstün performans demektir.",
       "Sortino oranı yalnızca aşağı yönlü oynaklığı kullanır. Bilgi oranı = aktif getiri / izleme hatası.",
       "M² ölçüsü, portföyü piyasanın riskine eşitleyerek getiriyi yüzde olarak karşılaştırır."
+    ]},
+    { b: "Anüiteler ve tahvil getirileri", t: [
+      "Anüite bugünkü değeri = A × [1 − (1 + r)^−n] / r. Dönem başında ödenen anüitede sonuç (1 + r) ile çarpılır.",
+      "Sabit büyüyen sonsuz nakit akışı (büyüyen perpetuite): BD = C₁ / (r − g), r > g olmalıdır.",
+      "Cari getiri = yıllık kupon / tahvil fiyatı. Vadeye kadar getiri: tahvilin nakit akışlarını bugünkü fiyata eşitleyen iskonto oranı.",
+      "Fiyat nominal değerin altındaysa (iskontolu) vadeye kadar getiri > cari getiri > kupon oranı.",
+      "Durasyon arttıkça faiz değişimine duyarlılık artar. Kuponsuz tahvilin Macaulay durasyonu vadesine eşittir."
+    ]},
+    { b: "APT, etkin piyasalar ve analiz yaklaşımları", t: [
+      "Arbitraj Fiyatlama Modeli (APT): beklenen getiriyi birden çok makroekonomik faktöre duyarlılıklarla açıklar; tek faktörlü CAPM'den daha geneldir.",
+      "Fama-French üç faktör modeli: piyasa, büyüklük (küçük şirket primi) ve değer (yüksek PD/DD primi) faktörleri.",
+      "Etkin piyasalar hipotezi: zayıf formda geçmiş fiyatlar, yarı güçlü formda tüm kamuya açık bilgi, güçlü formda içsel bilgi de dâhil tüm bilgi fiyata yansımıştır.",
+      "Zayıf form etkinse teknik analizle sürekli aşırı getiri elde edilemez; yarı güçlü form etkinse temel analiz de aşırı getiri sağlamaz.",
+      "Temel analizde yukarıdan aşağıya yaklaşım: ekonomi → sektör → şirket. Çarpanlar: F/K, PD/DD, FD/FAVÖK.",
+      "Teknik analiz göstergeleri: hareketli ortalamalar, RSI (70 üstü aşırı alım, 30 altı aşırı satım), MACD, destek ve direnç seviyeleri, işlem hacmi."
+    ]},
+    { b: "Performans ölçütleri (devamı)", t: [
+      "Jensen alfası = Rp − [Rf + βp × (Rm − Rf)]. Pozitif alfa, CAPM'in öngördüğünden fazla getiri demektir.",
+      "İzleme hatası: portföy getirisi ile karşılaştırma ölçütü getirisi arasındaki farkın standart sapması.",
+      "Bilgi oranı = (portföy getirisi − ölçüt getirisi) / izleme hatası.",
+      "Beta = kovaryans(varlık, piyasa) / piyasa varyansı."
     ]}
   ],
   kartlar: [
@@ -70,7 +91,16 @@ SPL.ekle("m11", {
     ["Treynor oranı", "(Rp − Rf) / βp"],
     ["Jensen alfası", "Rp − [Rf + βp(Rm − Rf)]"],
     ["Çeşitlendirmeyle yok edilebilen risk", "Sistematik olmayan (firmaya özgü) risk"],
-    ["RSI aşırı alım / aşırı satım eşikleri", "70 üstü aşırı alım, 30 altı aşırı satım"]
+    ["RSI aşırı alım / aşırı satım eşikleri", "70 üstü aşırı alım, 30 altı aşırı satım"],
+    ["Anüitenin bugünkü değeri", "A × [1 − (1 + r)^−n] / r"],
+    ["Büyüyen perpetuite", "C₁ / (r − g)"],
+    ["Cari getiri", "Yıllık kupon / tahvil fiyatı"],
+    ["APT", "Getiriyi birden çok faktöre duyarlılıkla açıklayan model"],
+    ["Zayıf form etkinlik", "Geçmiş fiyat bilgisi fiyatlara yansımış; teknik analiz aşırı getiri sağlamaz"],
+    ["Yarı güçlü form etkinlik", "Kamuya açık tüm bilgi fiyatlara yansımış"],
+    ["Bilgi oranı", "(Rp − R ölçüt) / izleme hatası"],
+    ["Beta", "Kov(varlık, piyasa) / Var(piyasa)"],
+    ["RSI 70'in üstü", "Aşırı alım bölgesi"]
   ],
   sorular: [
     { s: "Yıllık %12 nominal faiz aylık bileşik uygulanıyor. Efektif yıllık faiz yaklaşık kaçtır?", c: ["%12,00", "%12,36", "%12,55", "%12,68"], d: 3, a: "(1 + 0,12/12)^12 − 1 = 1,01^12 − 1 ≈ %12,68." },
@@ -84,6 +114,22 @@ SPL.ekle("m11", {
     { s: "Portföy getirisi %25, risksiz faiz %15, standart sapma %20, beta 0,8 ise Sharpe oranı kaçtır?", c: ["0,40", "0,50", "1,25", "12,5"], d: 1, a: "Sharpe = (25 − 15) / 20 = 0,50. (Treynor = 10 / 0,8 = 12,5.)" },
     { s: "Aşağıdaki performans ölçütlerinden hangisi CAPM'e göre beklenen getirinin üstündeki getiriyi ölçer?", c: ["Sharpe oranı", "Treynor oranı", "Jensen alfası", "Bilgi oranı"], d: 2, a: "Jensen alfası = gerçekleşen getiri − CAPM'in öngördüğü getiri." },
     { s: "Bir varlık SML'nin üzerinde konumlanıyorsa ne söylenebilir?", c: ["Pahalıdır, satılmalıdır", "Ucuzdur, riskine göre fazla getiri sunar", "Betası sıfırdır", "Risksiz varlıktır"], d: 1, a: "SML üzerindeki varlık, sistematik riskine göre beklenenden yüksek getiri sunar; fiyatı düşük kalmıştır." },
-    { s: "Nominal faiz %40, enflasyon %30 ise Fisher denklemine göre reel faiz yaklaşık kaçtır?", c: ["%7,7", "%10,0", "%13,3", "%70,0"], d: 0, a: "1,40 / 1,30 − 1 ≈ %7,7. Yaklaşık formül (%10) yüksek oranlarda yanıltıcıdır." }
+    { s: "Nominal faiz %40, enflasyon %30 ise Fisher denklemine göre reel faiz yaklaşık kaçtır?", c: ["%7,7", "%10,0", "%13,3", "%70,0"], d: 0, a: "1,40 / 1,30 − 1 ≈ %7,7. Yaklaşık formül (%10) yüksek oranlarda yanıltıcıdır." },
+    { s: "Yıllık %10 faizle 3 yıl boyunca her yıl sonunda 1.000 TL ödeyen anüitenin bugünkü değeri yaklaşık kaç TL'dir?", c: ["2.487", "2.727", "3.000", "3.310"], d: 0, a: "1.000 × [1 − 1,1^−3] / 0,1 ≈ 2.487 TL." },
+    { s: "Gelecek yıl 10 TL temettü bekleniyor, temettüler yılda %5 büyüyecek, iskonto oranı %15'tir. Hissenin değeri kaç TL'dir?", c: ["66,7", "100", "105", "200"], d: 1, a: "10 / (0,15 − 0,05) = 100 TL." },
+    { s: "Nominali 100 TL, yıllık kuponu 8 TL olan tahvilin fiyatı 80 TL'dir. Cari getiri yüzde kaçtır?", c: ["%8", "%9", "%10", "%12"], d: 2, a: "8 / 80 = %10." },
+    { s: "İskontolu (nominalin altında) işlem gören bir tahvil için doğru sıralama hangisidir?", c: ["Kupon oranı > cari getiri > vadeye kadar getiri", "Vadeye kadar getiri > cari getiri > kupon oranı", "Hepsi eşittir", "Cari getiri > kupon oranı > vadeye kadar getiri"], d: 1, a: "İskontolu tahvilde VKG > cari getiri > kupon oranı." },
+    { s: "5 yıl vadeli kuponsuz bir tahvilin Macaulay durasyonu kaç yıldır?", c: ["2,5", "4", "5", "Hesaplanamaz"], d: 2, a: "Kuponsuz tahvilin durasyonu vadesine eşittir." },
+    { s: "Beklenen getiriyi birden çok makroekonomik faktöre duyarlılıkla açıklayan model hangisidir?", c: ["CAPM", "Arbitraj Fiyatlama Modeli", "Gordon modeli", "Markowitz modeli"], d: 1, a: "APT çok faktörlü bir modeldir." },
+    { s: "Etkin piyasalar hipotezinin zayıf formu geçerliyse aşağıdakilerden hangisiyle sürekli aşırı getiri elde edilemez?", c: ["İçsel bilgi", "Teknik analiz", "Temel analiz", "Hiçbiri"], d: 1, a: "Zayıf formda geçmiş fiyatlar fiyatlara yansıdığı için teknik analiz işe yaramaz." },
+    { s: "Kamuya açık tüm bilginin fiyatlara yansıdığını öne süren etkinlik formu hangisidir?", c: ["Zayıf form", "Yarı güçlü form", "Güçlü form", "Teknik form"], d: 1, a: "Yarı güçlü formda temel analiz de aşırı getiri sağlamaz." },
+    { s: "Portföy getirisi %18, risksiz faiz %10, piyasa getirisi %16, beta 1,2 ise Jensen alfası yüzde kaçtır?", c: ["%0,8", "%1,2", "%2", "%8"], d: 0, a: "Beklenen = 10 + 1,2 × 6 = 17,2; alfa = 18 − 17,2 = %0,8." },
+    { s: "Bir hissenin piyasa ile kovaryansı 0,03, piyasa varyansı 0,02 ise betası kaçtır?", c: ["0,67", "1", "1,5", "6"], d: 2, a: "β = 0,03 / 0,02 = 1,5." },
+    { s: "Portföy ölçütü %2 geçmiş, izleme hatası %4 ise bilgi oranı kaçtır?", c: ["0,5", "2", "4", "8"], d: 0, a: "Bilgi oranı = 2 / 4 = 0,5." },
+    { s: "Temel analizde yukarıdan aşağıya yaklaşımın doğru sırası hangisidir?", c: ["Şirket → sektör → ekonomi", "Ekonomi → sektör → şirket", "Sektör → ekonomi → şirket", "Şirket → ekonomi → sektör"], d: 1, a: "Önce genel ekonomi, sonra sektör, en son şirket incelenir." },
+    { s: "RSI göstergesinin 75 olması teknik analizde genellikle nasıl yorumlanır?", c: ["Aşırı satım", "Aşırı alım", "Trend yok", "Hacim düşük"], d: 1, a: "RSI 70'in üstü aşırı alım bölgesi kabul edilir." },
+    { s: "Piyasa değeri 2.000, net kârı 200 olan şirketin F/K oranı kaçtır?", c: ["0,1", "5", "10", "20"], d: 2, a: "F/K = 2.000 / 200 = 10." },
+    { s: "Aylık %2 bileşik faizin yıllık efektif karşılığı yaklaşık yüzde kaçtır?", c: ["%24", "%24,6", "%26,8", "%28,5"], d: 2, a: "1,02¹² − 1 ≈ %26,8." },
+    { s: "Fama-French üç faktör modelinde piyasa faktörüne ek olarak hangi iki faktör yer alır?", c: ["Faiz ve kur", "Büyüklük ve değer", "Enflasyon ve büyüme", "Momentum ve likidite"], d: 1, a: "Küçük şirket (büyüklük) ve değer (yüksek PD/DD) faktörleri." }
   ]
 });

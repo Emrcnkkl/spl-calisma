@@ -44,6 +44,20 @@ SPL.ekle("m07", {
       "Finansal kiralama (leasing): kiracı varlığı kullanır, mülkiyet kiralayanda kalır; süre sonunda devir seçeneği olabilir.",
       "Faktoring: işletmenin vadeli alacaklarını faktoring şirketine devretmesi. Rücu'lu faktoringde tahsil edilemezse risk satıcıya döner; rücu'suzda faktöre aittir.",
       "Forfaiting: genelde ihracat alacaklarının (poliçe, bono) rücu'suz ve iskontolu satın alınması; orta vadeli ve tek seferlik işlemlerde kullanılır."
+    ]},
+    { b: "Kaldıraç ve finansal planlama", t: [
+      "Faaliyet kaldıracı derecesi = faaliyet kârındaki % değişim / satışlardaki % değişim. Sabit maliyetler yükseldikçe artar.",
+      "Finansal kaldıraç derecesi = net kârdaki (hisse başına kârdaki) % değişim / faaliyet kârındaki % değişim. Faiz giderleri arttıkça yükselir.",
+      "Birleşik kaldıraç derecesi = faaliyet kaldıracı × finansal kaldıraç.",
+      "Başabaş noktası (miktar) = sabit giderler / (birim satış fiyatı − birim değişken gider).",
+      "Satışlara yüzde yöntemi: bilanço ve gelir tablosu kalemlerinin satışlarla orantılı değiştiği varsayılarak dış finansman ihtiyacı tahmin edilir. Nakit bütçesi kısa vadeli nakit açığını ya da fazlasını gösterir."
+    ]},
+    { b: "Proje değerleme ayrıntıları ve birleşmeler", t: [
+      "Kârlılık endeksi = gelecekteki nakit akışlarının bugünkü değeri / başlangıç yatırımı. 1'den büyükse proje kabul edilir.",
+      "Geri ödeme süresi paranın zaman değerini dikkate almaz; indirgenmiş geri ödeme süresi dikkate alır ama sonraki nakit akışlarını yok sayar.",
+      "Birbirini dışlayan projelerde NBD ile İVO farklı sonuç verirse NBD tercih edilir. Değişen işaretli nakit akışlarında birden çok İVO çıkabilir.",
+      "Birleşme türleri: yatay (aynı sektörde rakip), dikey (tedarik zincirinde), konglomera (ilgisiz sektör). Amaç çoğunlukla sinerji yaratmaktır.",
+      "Düşmanca devralmaya karşı savunmalar: zehir hapı (poison pill), altın paraşüt, beyaz şövalye."
     ]}
   ],
   kartlar: [
@@ -61,7 +75,16 @@ SPL.ekle("m07", {
     ["Rücu'suz faktoring", "Alacak tahsil edilemezse risk faktoring şirketinde kalır."],
     ["Forfaiting", "İhracat alacaklarının rücu'suz ve iskontolu satın alınması."],
     ["Yatay birleşme", "Aynı sektörde, aynı üretim aşamasındaki şirketlerin birleşmesi."],
-    ["Finansman hiyerarşisi (pecking order)", "İç kaynak → borç → pay ihracı"]
+    ["Finansman hiyerarşisi (pecking order)", "İç kaynak → borç → pay ihracı"],
+    ["Faaliyet kaldıracı derecesi", "Faaliyet kârındaki % değişim / satışlardaki % değişim"],
+    ["Finansal kaldıraç derecesi", "Net kârdaki % değişim / faaliyet kârındaki % değişim"],
+    ["Başabaş noktası (miktar)", "Sabit giderler / (birim fiyat − birim değişken gider)"],
+    ["Kârlılık endeksi", "Nakit akışlarının bugünkü değeri / başlangıç yatırımı; >1 ise kabul"],
+    ["Dikey birleşme", "Tedarik zincirindeki farklı aşamalardaki şirketlerin birleşmesi"],
+    ["Konglomera birleşme", "Birbiriyle ilgisiz sektörlerdeki şirketlerin birleşmesi"],
+    ["Zehir hapı (poison pill)", "Düşmanca devralmayı pahalılaştıran savunma yöntemi"],
+    ["Rücusuz faktoring", "Alacak tahsil edilemezse riski faktoring şirketi üstlenir"],
+    ["Finansal kiralama", "Kiralanan varlığın risk ve getirilerinin büyük ölçüde kiracıya geçtiği kiralama"]
   ],
   sorular: [
     { s: "Özkaynak maliyeti %30, vergi öncesi borç maliyeti %20, vergi oranı %25, sermaye yapısı %60 özkaynak / %40 borç ise AOSM kaçtır?", c: ["%22", "%24", "%26", "%28"], d: 1, a: "AOSM = 0,6 × 30 + 0,4 × 20 × (1 − 0,25) = 18 + 6 = %24." },
@@ -74,6 +97,23 @@ SPL.ekle("m07", {
     { s: "Vergili Modigliani-Miller yaklaşımına göre borç kullanımı firma değerini nasıl etkiler?", c: ["Etkilemez", "Borcun vergi kalkanı kadar artırır", "Her zaman azaltır", "Yalnızca temettüyü etkiler"], d: 1, a: "Faiz giderleri vergiden düşüldüğü için borç, vergi kalkanının bugünkü değeri kadar firma değerini artırır." },
     { s: "Bir otomobil üreticisinin lastik üreticisini satın alması hangi tür birleşmedir?", c: ["Yatay", "Dikey", "Çapraz (konglomera)", "Ters birleşme"], d: 1, a: "Tedarik zincirinin farklı aşamalarındaki şirketlerin birleşmesi dikey birleşmedir." },
     { s: "Alacakların tahsil edilememesi riskinin faktoring şirketine geçtiği işlem hangisidir?", c: ["Rücu'lu faktoring", "Rücu'suz faktoring", "Operasyonel leasing", "Finansal leasing"], d: 1, a: "Rücu'suz faktoringde tahsil riski faktoring şirketine aittir." },
-    { s: "Faiz karşılama oranı nasıl hesaplanır?", c: ["Net kâr / faiz gideri", "FVÖK / faiz gideri", "Faiz gideri / toplam borç", "Özkaynak / faiz gideri"], d: 1, a: "Faiz karşılama oranı = faiz ve vergi öncesi kâr (FVÖK) / faiz gideri." }
+    { s: "Faiz karşılama oranı nasıl hesaplanır?", c: ["Net kâr / faiz gideri", "FVÖK / faiz gideri", "Faiz gideri / toplam borç", "Özkaynak / faiz gideri"], d: 1, a: "Faiz karşılama oranı = faiz ve vergi öncesi kâr (FVÖK) / faiz gideri." },
+    { s: "Sabit giderleri 300.000 TL, birim satış fiyatı 50 TL, birim değişken gideri 20 TL olan işletmenin başabaş satış miktarı kaç adettir?", c: ["6.000", "10.000", "15.000", "20.000"], d: 1, a: "300.000 / (50 − 20) = 10.000 adet." },
+    { s: "Satışlar %10 arttığında faaliyet kârı %30 artıyorsa faaliyet kaldıracı derecesi kaçtır?", c: ["0,33", "2", "3", "30"], d: 2, a: "FKD = %30 / %10 = 3." },
+    { s: "Faaliyet kaldıracı derecesi 2, finansal kaldıraç derecesi 1,5 ise birleşik kaldıraç derecesi kaçtır?", c: ["0,5", "1,33", "3", "3,5"], d: 2, a: "BKD = 2 × 1,5 = 3." },
+    { s: "Başlangıç yatırımı 1.000 TL olan projenin nakit akışlarının bugünkü değeri 1.200 TL'dir. Kârlılık endeksi kaçtır?", c: ["0,83", "1,2", "200", "2,2"], d: 1, a: "KE = 1.200 / 1.000 = 1,2 > 1, proje kabul edilir." },
+    { s: "Yıllık 25.000 TL nakit akışı sağlayan 100.000 TL'lik bir projenin (iskontosuz) geri ödeme süresi kaç yıldır?", c: ["2", "3", "4", "5"], d: 2, a: "100.000 / 25.000 = 4 yıl." },
+    { s: "Geri ödeme süresi yönteminin temel zayıflığı hangisidir?", c: ["Hesaplaması zordur", "Paranın zaman değerini ve geri ödeme sonrasındaki nakit akışlarını dikkate almaz", "Yalnızca büyük projelerde kullanılır", "Faiz oranını gerektirir"], d: 1, a: "Basit geri ödeme süresi iki önemli bilgiyi göz ardı eder." },
+    { s: "Birbirini dışlayan iki projede NBD ve İVO yöntemleri farklı sonuç veriyorsa hangisine göre karar verilmelidir?", c: ["İVO", "NBD", "Geri ödeme süresi", "Muhasebe kârlılığı"], d: 1, a: "NBD, şirket değerine katkıyı doğrudan ölçtüğü için tercih edilir." },
+    { s: "Bir un fabrikasının buğday üreten bir tarım şirketini satın alması hangi birleşme türüdür?", c: ["Yatay", "Dikey", "Konglomera", "Ters birleşme"], d: 1, a: "Tedarik zincirinde geriye doğru dikey birleşmedir." },
+    { s: "Bir gıda şirketinin bir yazılım şirketini satın alması hangi birleşme türüdür?", c: ["Yatay", "Dikey", "Konglomera", "Sinerjisiz birleşme"], d: 2, a: "İlgisiz sektörler arası birleşme konglomeradır." },
+    { s: "Düşmanca bir devralmaya karşı hedef şirketin dostane bir alıcı bulmasına ne denir?", c: ["Zehir hapı", "Beyaz şövalye", "Altın paraşüt", "Yeşil posta"], d: 1, a: "Beyaz şövalye, dostane alternatif alıcıdır." },
+    { s: "İhracatçının vadeli alacaklarını rücusuz olarak iskontoyla bir finans kuruluşuna satmasına ne denir?", c: ["Faktoring", "Forfaiting", "Leasing", "Repo"], d: 1, a: "Forfaiting ihracat alacaklarına yöneliktir ve rücusuzdur." },
+    { s: "Satış hasılatı 1.000, satılan malın maliyeti 600, faaliyet giderleri 200 olan işletmenin faaliyet kâr marjı yüzde kaçtır?", c: ["%20", "%40", "%60", "%80"], d: 0, a: "Faaliyet kârı = 1.000 − 600 − 200 = 200; marj = 200 / 1.000 = %20." },
+    { s: "Toplam borcu 400, özkaynakları 600 olan işletmenin borç/özkaynak oranı kaçtır?", c: ["0,40", "0,67", "1,50", "2,50"], d: 1, a: "400 / 600 ≈ 0,67." },
+    { s: "Risksiz faiz %20, piyasa risk primi %8 ve beta 1,25 ise CAPM'e göre özkaynak maliyeti yüzde kaçtır?", c: ["%25", "%28", "%30", "%33"], d: 2, a: "kₑ = 20 + 1,25 × 8 = %30." },
+    { s: "Finansal kiralamada (finansal leasing) hangisi doğrudur?", c: ["Varlığın risk ve getirileri büyük ölçüde kiracıya geçer", "Kira süresi her zaman bir aydan kısadır", "Kiracı varlığı kullanamaz", "Bakım her zaman kiralayana aittir"], d: 0, a: "Finansal kiralamada ekonomik sahiplik büyük ölçüde kiracıdadır." },
+    { s: "Aktif kârlılığı (ROA) %8, özkaynak çarpanı (aktif/özkaynak) 2,5 ise özkaynak kârlılığı yüzde kaçtır?", c: ["%3,2", "%10,5", "%20", "%25"], d: 2, a: "ÖSK = ROA × özkaynak çarpanı = 8 × 2,5 = %20." },
+    { s: "Satışlara yüzde yöntemi finansal planlamada hangi amaçla kullanılır?", c: ["Hisse fiyatını tahmin etmek", "Satış artışına bağlı dış finansman ihtiyacını tahmin etmek", "Vergi borcunu hesaplamak", "Temettü verimini ölçmek"], d: 1, a: "Kalemlerin satışlarla orantılı değiştiği varsayılarak ek fon ihtiyacı bulunur." }
   ]
 });

@@ -45,6 +45,29 @@ SPL.ekle("m13", {
       "Straddle: aynı K ve vadeli call + put alımı; yüksek oynaklık beklentisi. Strangle: farklı K'lı call + put, daha ucuz.",
       "Boğa yayılımı (bull spread): düşük K'lı call al + yüksek K'lı call sat. Ayı yayılımı tersi.",
       "Riske maruz değer (RMD/VaR): belirli güven düzeyi ve sürede beklenen en yüksek kayıp. Yöntemler: tarihsel benzetim, varyans-kovaryans (parametrik), Monte Carlo."
+    ]},
+    { b: "Baz, korunma ve vadeli fiyat ilişkileri", t: [
+      "Baz = spot fiyat − vadeli fiyat. Vade yaklaştıkça baz sıfıra yakınsar.",
+      "Contango: vadeli fiyatın spot fiyatın üzerinde olması. Backwardation (ters piyasa): vadeli fiyatın spotun altında olması.",
+      "Kısa korunma (short hedge): elinde varlık bulunan ya da ileride satacak olan taraf vadeli satar. Uzun korunma (long hedge): ileride alacak olan taraf vadeli alır.",
+      "Baz riski: spot ile vadeli fiyatın aynı oranda hareket etmemesinden doğan, korunmada kalan risk.",
+      "Endeks vadeli ile portföy korumasında sözleşme sayısı ≈ (portföy değeri / sözleşme büyüklüğü) × portföy betası."
+    ]},
+    { b: "Opsiyon fiyatını etkileyen faktörler ve duyarlılıklar", t: [
+      "İçsel değer: call için max(S − K, 0), put için max(K − S, 0). Zaman değeri = prim − içsel değer.",
+      "Kârda (ITM) call: S > K. Başabaşta (ATM): S ≈ K. Zararda (OTM) call: S < K. Put için tersidir.",
+      "Dayanak fiyatı artarsa call primi artar, put primi azalır. Kullanım fiyatı artarsa call ucuzlar, put pahalanır.",
+      "Oynaklık artarsa hem call hem put primi artar. Risksiz faiz artarsa call primi artar, put primi azalır. Temettü call'u ucuzlatır, put'u pahalandırır.",
+      "Duyarlılıklar: delta (dayanak fiyatına), gama (deltanın değişimine), vega (oynaklığa), teta (zamana), rho (faize).",
+      "Black-Scholes varsayımları: Avrupa tipi opsiyon, sabit oynaklık ve faiz, lognormal fiyat dağılımı, işlem maliyeti yok."
+    ]},
+    { b: "Opsiyon stratejileri", t: [
+      "Örtülü call (covered call): dayanağa sahipken call satmak; ek prim geliri sağlar, yükseliş kazancını sınırlar.",
+      "Koruyucu put (protective put): dayanağa sahipken put almak; düşüşe karşı sigorta işlevi görür.",
+      "Boğa yayılması (bull spread): düşük kullanım fiyatlı call alıp yüksek kullanım fiyatlı call satmak; sınırlı yükseliş beklentisi.",
+      "Ayı yayılması (bear spread): sınırlı düşüş beklentisinde kurulur (ör. yüksek kullanım fiyatlı put alıp düşük kullanım fiyatlı put satmak).",
+      "Uzun straddle: aynı kullanım fiyatlı call ve put almak; yön bilinmeyen büyük hareket beklentisi. Strangle: farklı kullanım fiyatlarıyla daha ucuz versiyonu.",
+      "Collar: dayanağa sahipken put alıp call satmak; kazanç ve zarar aralığını sınırlar."
     ]}
   ],
   kartlar: [
@@ -64,7 +87,16 @@ SPL.ekle("m13", {
     ["Faiz swapında anapara değişimi olur mu?", "Hayır; ödemeler nominal tutar üzerinden hesaplanır, yalnızca net faiz farkı ödenir."],
     ["Koruyucu satım (protective put)", "Dayanağa sahipken put almak; aşağı yönlü zararı sınırlar."],
     ["Straddle", "Aynı kullanım fiyatı ve vadeli call + put alımı; yön değil yüksek oynaklık beklentisi."],
-    ["Uzun hedge kimin içindir?", "İleride dayanak varlığı satın alacak olan ve fiyat artışından korunmak isteyen (vadeli alır)."]
+    ["Uzun hedge kimin içindir?", "İleride dayanak varlığı satın alacak olan ve fiyat artışından korunmak isteyen (vadeli alır)."],
+    ["Kısa korunma", "Elinde varlık olanın vadeli satış pozisyonu açması"],
+    ["Baz riski", "Spot ve vadeli fiyatların farklı hareket etmesinden kalan risk"],
+    ["İçsel değer (call)", "max(S − K, 0)"],
+    ["Zaman değeri", "Prim − içsel değer"],
+    ["Teta", "Opsiyon priminin zamanın geçmesine duyarlılığı"],
+    ["Örtülü call", "Dayanağa sahipken call satmak"],
+    ["Koruyucu put", "Dayanağa sahipken put almak"],
+    ["Boğa yayılması (call ile)", "Düşük kullanım fiyatlı call al, yüksek kullanım fiyatlı call sat"],
+    ["Collar", "Dayanağa sahipken put alıp call satmak"]
   ],
   sorular: [
     { s: "Aşağıdakilerden hangisi vadeli işlem (futures) sözleşmelerini forward sözleşmelerden ayıran özelliktir?", c: ["Dayanak varlığa sahip olunması", "Standart olması ve borsada işlem görmesi", "Vade sonunda uzlaşılması", "Karşı taraf riskinin yüksek olması"], d: 1, a: "Futures standart sözleşmedir, borsada işlem görür; merkezi karşı taraf ve günlük uzlaşma vardır." },
@@ -78,6 +110,23 @@ SPL.ekle("m13", {
     { s: "Aynı kullanım fiyatı ve vadeli bir call ve bir put opsiyonunun birlikte alındığı strateji hangisidir?", c: ["Strangle", "Straddle", "Boğa yayılımı", "Kelebek"], d: 1, a: "Straddle; yön değil, büyük fiyat hareketi (yüksek oynaklık) beklentisini yansıtır." },
     { s: "Vadeli işlem pozisyonunda teminat sürdürme seviyesinin altına inerse hangisi olur?", c: ["Pozisyon hemen kapatılır, başka işlem yapılmaz", "Teminat başlangıç seviyesine tamamlanmalıdır", "Teminat sürdürme seviyesine tamamlanmalıdır", "Teminat iade edilir"], d: 1, a: "Teminat tamamlama çağrısında hesap başlangıç teminatı seviyesine tamamlanır; yapılmazsa pozisyon kapatılabilir." },
     { s: "Sabit faiz ödemelerinin değişken faiz ödemeleriyle değiştirildiği sözleşme hangisidir?", c: ["Döviz swapı", "Faiz swapı", "Kredi temerrüt swapı", "Forward faiz anlaşması"], d: 1, a: "Faiz swapında aynı para biriminde sabit ve değişken faiz ödemeleri değiştirilir." },
-    { s: "Riske maruz değer (RMD/VaR) hesaplama yöntemlerinden hangisi rastgele senaryo üretimine dayanır?", c: ["Tarihsel benzetim", "Varyans-kovaryans", "Monte Carlo benzetimi", "Duyarlılık analizi"], d: 2, a: "Monte Carlo yöntemi, varsayılan dağılımlardan çok sayıda rastgele senaryo üreterek kayıp dağılımını tahmin eder." }
+    { s: "Riske maruz değer (RMD/VaR) hesaplama yöntemlerinden hangisi rastgele senaryo üretimine dayanır?", c: ["Tarihsel benzetim", "Varyans-kovaryans", "Monte Carlo benzetimi", "Duyarlılık analizi"], d: 2, a: "Monte Carlo yöntemi, varsayılan dağılımlardan çok sayıda rastgele senaryo üreterek kayıp dağılımını tahmin eder." },
+    { s: "Spot fiyat 100 TL, vadeli fiyat 106 TL ise baz kaç TL'dir?", c: ["−6", "6", "106", "206"], d: 0, a: "Baz = spot − vadeli = 100 − 106 = −6." },
+    { s: "Vadeli fiyatın spot fiyatın üzerinde olduğu piyasa durumuna ne denir?", c: ["Backwardation", "Contango", "Arbitraj", "Baz riski"], d: 1, a: "Contango; tersine backwardation denir." },
+    { s: "Üç ay sonra elindeki buğdayı satacak bir çiftçi fiyat düşüşüne karşı nasıl korunur?", c: ["Vadeli alım pozisyonu açar", "Vadeli satış pozisyonu açar", "Call opsiyonu satar ve vadeli alır", "Hiçbir şey yapmaz"], d: 1, a: "Kısa korunma: vadeli satış." },
+    { s: "Betası 1,2 olan 6.000.000 TL'lik pay portföyünü, sözleşme büyüklüğü 120.000 TL olan endeks vadelileriyle korumak için yaklaşık kaç sözleşme satılmalıdır?", c: ["50", "60", "72", "100"], d: 1, a: "(6.000.000 / 120.000) × 1,2 = 60 sözleşme." },
+    { s: "Dayanak fiyatı 120 TL, kullanım fiyatı 100 TL, primi 25 TL olan call opsiyonunun zaman değeri kaç TL'dir?", c: ["0", "5", "20", "25"], d: 1, a: "İçsel değer = 20; zaman değeri = 25 − 20 = 5 TL." },
+    { s: "Dayanak fiyatı 80 TL iken kullanım fiyatı 90 TL olan call opsiyonu hangi durumdadır?", c: ["Kârda (ITM)", "Başabaşta (ATM)", "Zararda (OTM)", "Vadesi dolmuş"], d: 2, a: "S < K olduğu için call zarardadır (OTM)." },
+    { s: "Risksiz faizin artması opsiyon primlerini genellikle nasıl etkiler?", c: ["Call artar, put azalır", "Call azalır, put artar", "İkisi de artar", "İkisi de azalır"], d: 0, a: "Faiz artışı call'u pahalandırır, put'u ucuzlatır." },
+    { s: "Dayanak varlığın temettü dağıtması opsiyon primlerini nasıl etkiler?", c: ["Call artar, put azalır", "Call azalır, put artar", "Etkilemez", "İkisi de artar"], d: 1, a: "Temettü dayanak fiyatını düşürür; call ucuzlar, put pahalanır." },
+    { s: "Opsiyon priminin oynaklıktaki değişime duyarlılığını ölçen gösterge hangisidir?", c: ["Delta", "Gama", "Vega", "Rho"], d: 2, a: "Vega oynaklık duyarlılığıdır." },
+    { s: "Zaman geçtikçe opsiyon priminin azalmasını ölçen gösterge hangisidir?", c: ["Teta", "Delta", "Rho", "Vega"], d: 0, a: "Teta zaman duyarlılığıdır." },
+    { s: "Elinde hisse bulunan ve ek prim geliri elde etmek isteyen, ancak yükseliş kazancının sınırlanmasını kabul eden yatırımcı hangi stratejiyi uygular?", c: ["Koruyucu put", "Örtülü call", "Uzun straddle", "Ayı yayılması"], d: 1, a: "Örtülü call: hisseye sahipken call satılır." },
+    { s: "Elindeki hisseyi düşüşe karşı sigortalamak isteyen yatırımcı hangi işlemi yapar?", c: ["Call satar", "Put alır", "Put satar", "Vadeli alır"], d: 1, a: "Koruyucu put alır." },
+    { s: "Sınırlı bir yükseliş bekleyen yatırımcının düşük kullanım fiyatlı call alıp yüksek kullanım fiyatlı call satmasıyla kurduğu strateji hangisidir?", c: ["Boğa yayılması", "Ayı yayılması", "Straddle", "Collar"], d: 0, a: "Boğa (bull) yayılması." },
+    { s: "Yönünü bilmediği ancak büyük bir fiyat hareketi bekleyen yatırımcının aynı kullanım fiyatlı call ve put alması hangi stratejidir?", c: ["Uzun straddle", "Kısa straddle", "Örtülü call", "Boğa yayılması"], d: 0, a: "Uzun straddle büyük hareketten kazanır." },
+    { s: "Black-Scholes modelinin varsayımlarından biri hangisidir?", c: ["Opsiyon Amerikan tipidir", "Oynaklık ve risksiz faiz sabittir", "İşlem maliyetleri yüksektir", "Fiyatlar normal dağılır ve negatif olabilir"], d: 1, a: "Model Avrupa tipi opsiyon, sabit oynaklık ve faiz, lognormal fiyat varsayar." },
+    { s: "Kredi riskini bir taraftan diğerine aktaran, prim karşılığında temerrüt hâlinde ödeme sağlayan türev araç hangisidir?", c: ["Faiz swapı", "Kredi temerrüt swapı (CDS)", "Döviz forwardı", "Varant"], d: 1, a: "CDS bir kredi türevidir." },
+    { s: "İki tarafın farklı para birimlerindeki anapara ve faiz ödemelerini değiştirdiği swap türü hangisidir?", c: ["Faiz swapı", "Döviz (para) swapı", "Emtia swapı", "Kredi temerrüt swapı"], d: 1, a: "Döviz swapında genellikle anaparalar da değiştirilir." }
   ]
 });
