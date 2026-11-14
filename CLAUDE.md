@@ -10,6 +10,8 @@ Site: https://emrcnkkl.github.io/spl-calisma/ (GitHub Pages, kaynak: GitHub Acti
 - `veri/mXX.js` — `SPL.ekle("mXX", { uyari?, ozet:[{b, t:[…]}], kartlar:[[ön, arka]], sorular:[{s, c:[şıklar], d:doğruIndex, a:açıklama}] })`. Şıklar ekranda karıştırılır.
 - `veri/detay.js` — `SPL_DETAY.mXX`: renk tonu `h`, simge `i`, `giris`, `sekil[]` (index.html → `SEKIL`: SVG grafikler / akış şemaları), `ipucu[]`, `formul[[ad, ifade]]`, `link[{t,u,n,en}]`, `yt` (YouTube arama sorgusu); `SPL_GENEL_LINK` Rehber'de. Modül sayfası "Genel bakış" sekmesiyle açılır.
   Bağlantılar yalnızca resmî kurum ana sayfaları, mevzuat.gov.tr metinleri ve Investopedia terim sayfaları (uydurma alt sayfa adresi yazma).
+- `veri/ders/mXX.js` — konu anlatımı: `SPL.anlat("mXX", { giris, dersler:[{ k, t, dk, kap?:[alt başlık kodları], b:[bloklar], ak:[akılda kalsın] }] })`. Bloklar: `{h}` ara başlık, `{p}` paragraf, `{l}`/`{n}` liste, `{d}` dikkat, `{o}` örnek, `{t}` tablo (ilk satır başlık); metinde `**kalın**`.
+  "Okudum" düğmesi `kap` (yoksa `k` ve alt kodları) konularını işaretler. Şimdilik Düzey 1 modülleri (m01, m02, m04, m06); yeni modül eklerken index.html'deki script etiketine ekle.
 - `config.js` — `window.SPL_FIREBASE` (null ise Grup kapalı). Firestore koleksiyonu `spl_profiller/{uid}` (anonim giriş; kurallar README'de).
 - Kişisel durum `localStorage "spl.v1"`: `ad, konu{"mXX:alt":tarih}, kart{"mXX:i":{k,t}}, deneme[], sinav{mXX:{puan,tarih}}, plan{mXX:tarih}, paylas`. Tema `spl.tema`.
 
